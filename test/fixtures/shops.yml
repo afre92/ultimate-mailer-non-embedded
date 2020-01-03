@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  shopify_domain: MyString
+  shopify_token: MyString
+  email: MyString
+  subscription_type: 1
+  tokens: 1.5
+
+two:
+  shopify_domain: MyString
+  shopify_token: MyString
+  email: MyString
+  subscription_type: 1
+  tokens: 1.5
