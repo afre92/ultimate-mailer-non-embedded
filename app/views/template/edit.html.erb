@@ -41,16 +41,14 @@
       projectId: 3676,
       displayMode: 'email'
     })
-    // load template. either default or something else
+    unlayer.loadDesign(<%= raw @template.body %>);
   }); 
 
 
   $('#save-template').on('click', function(){
     unlayer.saveDesign(function(design) {
-      console.log(design)
-      debugger
-      // $('#template_body').val(JSON.stringify(design))
-      // $('form').submit()
+      $('#template_body').val(JSON.stringify(design))
+      $('form').submit()
     });
   })
 
