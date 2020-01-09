@@ -1,21 +1,22 @@
 class TemplateController < ApplicationController
-# before_action :find_shop
+before_action :find_shop#, only: :edit
 
   def edit
-    @template = Template.new
-    
+    @template = @shop.templates.find(params[:template])
   end
 
   def update
+    byebug
   end
 
   private
 
     def find_shop
-      # if params[:shop] && Shop.find(params[:shop]).present?
-      #   @shop = Shop.find(params[:shop])
-      # else
-         return render :nothing => true, :status => :bad_request
-      # end
+      if params[:shop] && Shop.find_by(shopify_domain: params[:shop]).present?
+        @shop = Shop.find_by(shopify_domain: params[:shop])
+      else
+        # render nothing
+        return render :nothing => true, :status => :bad_request
+      end
     end
 end
