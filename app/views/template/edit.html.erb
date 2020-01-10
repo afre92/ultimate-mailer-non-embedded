@@ -48,6 +48,7 @@
 
 
   $('#save-template').on('click', function(){
+    window.scrollTo(0,0);
     unlayer.saveDesign(function(design) {
       $('#template_body').val(JSON.stringify(design))
       form = document.querySelector('form');

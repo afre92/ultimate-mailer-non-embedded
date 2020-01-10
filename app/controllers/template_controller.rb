@@ -5,13 +5,7 @@ class TemplateController < ApplicationController
   end
 
   def update
-    # respond with ajax
-    if @template.update(template_params)
-      flash[:notice] = "Post successfully created"
-    else
-      flash[:alert] = "Post successfully created NOTTTT"
-    end
-
+    @saved = @template.update(template_params)
   end
 
   private
