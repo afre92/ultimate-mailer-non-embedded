@@ -21,6 +21,6 @@ class TemplateController < ApplicationController
     end
 
     def template_params
-      params.require(:template).permit(:from, :subject, :reply_to, :body)
+      params.require(:template).permit(:from, :subject, :reply_to, :body, :html)
     end
 end
