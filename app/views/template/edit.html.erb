@@ -21,6 +21,7 @@
       </div>
       <div>
         <%= f.hidden_field :body %>
+        <%= f.hidden_field :html %>
         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
       </div>
     </div>
@@ -49,8 +50,9 @@
 
   $('#save-template').on('click', function(){
     window.scrollTo(0,0);
-    unlayer.saveDesign(function(design) {
-      $('#template_body').val(JSON.stringify(design))
+    unlayer.exportHtml(function(data) {
+      $('#template_body').val(JSON.stringify(data.design))
+      $('#template_html').val(data.html)
       form = document.querySelector('form');
       Rails.fire(form, 'submit');
     });
