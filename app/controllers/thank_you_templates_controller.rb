@@ -1,7 +1,8 @@
-class TemplateController < ApplicationController
+class ThankYouTemplatesController < ApplicationController
   before_action :find_shop
 
   def edit
+    
   end
 
   def update
@@ -13,7 +14,7 @@ class TemplateController < ApplicationController
     def find_shop
       if params[:shop] && Shop.find_by(shopify_domain: params[:shop]).present?
         @shop = Shop.find_by(shopify_domain: params[:shop])
-        @template = @shop.templates.find(params[:id])
+        @template = @shop.thank_you_template
       else
         # render nothing
         return render :nothing => true, :status => :bad_request
@@ -21,6 +22,6 @@ class TemplateController < ApplicationController
     end
 
     def template_params
-      params.require(:template).permit(:from, :subject, :reply_to, :body, :html)
+      params.require(:thank_you_template).permit(:from, :subject, :reply_to, :body, :html)
     end
 end

@@ -5,11 +5,13 @@ one:
   subject: MyString
   reply_to: MyString
   body: 
-  shop_id: 
+  shop_id: 1
+  html: MyText
 
 two:
   from: MyString
   subject: MyString
   reply_to: MyString
   body: 
-  shop_id: 
+  shop_id: 1
+  html: MyText

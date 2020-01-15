@@ -1,3 +1,3 @@
 class Shop < ApplicationRecord
-  has_many :templates
+  has_one :thank_you_template
 end

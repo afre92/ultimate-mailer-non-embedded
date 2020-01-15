@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_14_012227) do
+ActiveRecord::Schema.define(version: 2020_01_15_011438) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,15 +25,15 @@ ActiveRecord::Schema.define(version: 2020_01_14_012227) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "templates", force: :cascade do |t|
+  create_table "thank_you_templates", force: :cascade do |t|
     t.string "from"
     t.string "subject"
     t.string "reply_to"
-    t.jsonb "body", default: "{}"
+    t.jsonb "body"
     t.integer "shop_id"
+    t.text "html"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "html"
   end
 
 end

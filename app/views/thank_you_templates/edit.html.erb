@@ -2,7 +2,7 @@
 <div class="main-container">
   <h2>Edit email content</h2>
     <div class="col-md-12 pl-0 pr-0">
-      <%= form_for @template, url: template_update_path({shop: @shop.shopify_domain, id: @template.id}), remote: true do |f| %>
+      <%= form_for @template, url: thank_you_templates_update_path({shop: @shop.shopify_domain, id: @template.id}), remote: true do |f| %>
       <div class="form-group">
         <label>From:</label>
         <%= f.text_field :from, class: "form-control", placeholder: "my_email@email.com" %>
@@ -51,8 +51,8 @@
   $('#save-template').on('click', function(){
     window.scrollTo(0,0);
     unlayer.exportHtml(function(data) {
-      $('#template_body').val(JSON.stringify(data.design))
-      $('#template_html').val(data.html)
+      $('#thank_you_template_body').val(JSON.stringify(data.design))
+      $('#thank_you_template_html').val(data.html)
       form = document.querySelector('form');
       Rails.fire(form, 'submit');
     });

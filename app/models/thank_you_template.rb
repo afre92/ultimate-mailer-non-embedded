@@ -1,0 +1,2 @@
+class ThankYouTemplate < ApplicationRecord
+end
