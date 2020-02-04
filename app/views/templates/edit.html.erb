@@ -1,0 +1,64 @@
+
+<div class="main-container">
+  <h2>Edit email content</h2>
+    <div class="col-md-12 pl-0 pr-0">
+      <%= form_for @template, url: thank_you_templates_update_path({shop: @shop.shopify_domain, id: @template.id}), remote: true do |f| %>
+      <div class="form-group">
+        <label>From:</label>
+        <%= f.text_field :from, class: "form-control", placeholder: "my_email@email.com" %>
+      </div>
+      <div class="form-group">
+        <label>To:</label>
+        <input type="text" class="form-control" placeholder="customer@email.com" value="{{customer.email}}" disabled: disabled>
+      </div>
+      <div class="form-group">
+        <label>Subject:</label>
+        <%= f.text_field :subject, class: "form-control", placeholder: "Thank you for your visit", value: "Sincerely Welcome  {{customer.first_name}} To {{shop.shop_name}}" %>
+      </div>
+      <div class="form-group pb-4">
+        <label>Reply to:</label>
+        <%= f.text_field :reply_to, class: "form-control", placeholder: "my_email@email.com" %>
+      </div>
+      <div>
+        <%= f.hidden_field :body %>
+        <%= f.hidden_field :html %>
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      </div>
+    </div>
+    <div id="editor-container" class="pb-4" style="width: 1024px; height: 600px;">
+    </div>
+
+    <% end %>
+    <div class="form-group text-center pb-5">
+      <button type="submit" class="btn btn-primary btn-round" id="save-template" >Save Template</button>
+    </div>
+
+</div>
+
+<script>
+
+
+  $(document).ready(function() {
+    unlayer.init({
+      id: 'editor-container',
+      projectId: 3676,
+      displayMode: 'email'
+    })
+    unlayer.loadDesign(<%= raw @template.body %>);
+  }); 
+
+
+  $('#save-template').on('click', function(){
+    window.scrollTo(0,0);
+    unlayer.exportHtml(function(data) {
+      $('#thank_you_template_body').val(JSON.stringify(data.design))
+      $('#thank_you_template_html').val(data.html)
+      form = document.querySelector('form');
+      Rails.fire(form, 'submit');
+    });
+  })
+
+</script>
+
+
+
