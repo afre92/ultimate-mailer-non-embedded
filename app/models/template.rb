@@ -1,4 +1,5 @@
 class Template < ApplicationRecord
+  belongs_to :shop
   before_save :replace_quote_entities_with_escape_characters
 
   def replace_quote_entities_with_escape_characters

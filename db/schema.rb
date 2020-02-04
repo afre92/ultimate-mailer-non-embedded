@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2020_02_04_014509) do
     t.jsonb "body"
     t.integer "shop_id"
     t.text "html"
+    t.integer "template_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

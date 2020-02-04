@@ -14,7 +14,7 @@ class TemplatesController < ApplicationController
     def find_shop
       if params[:shop] && Shop.find_by(shopify_domain: params[:shop]).present?
         @shop = Shop.find_by(shopify_domain: params[:shop])
-        @template = @shop.thank_you_template
+        @template = @shop.templates.where(template_type: params[:type]).first
       else
         # render nothing
         return render :nothing => true, :status => :bad_request
@@ -22,6 +22,6 @@ class TemplatesController < ApplicationController
     end
 
     def template_params
-      params.require(:thank_you_template).permit(:from, :subject, :reply_to, :body, :html)
+      params.require(:template).permit(:from, :subject, :reply_to, :body, :html)
     end
 end

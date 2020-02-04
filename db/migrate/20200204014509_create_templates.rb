@@ -7,6 +7,7 @@ class CreateTemplates < ActiveRecord::Migration[5.2]
       t.jsonb :body
       t.integer :shop_id
       t.text :html
+      t.integer :template_type
 
       t.timestamps
     end
