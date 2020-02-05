@@ -4,6 +4,5 @@ class Template < ApplicationRecord
 
   def replace_quote_entities_with_escape_characters
     self.html = html.gsub("&quot;", "\"").gsub("&ldquo;", "\"").gsub("&rdquo;", "\"").gsub("&lsquo;", "\"").gsub("&rsquo;", "\"").gsub("&lt;", "<").gsub("&gt;", ">").gsub("&nbsp;", " ")
-    byebug
 	end
 end
