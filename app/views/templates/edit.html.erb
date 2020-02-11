@@ -73,7 +73,9 @@
   // to use front end validation
   $('#save-template').on('click', function(){
     unlayer.exportHtml(function(data) {
+      // debugger
       $('#template_body').val(JSON.stringify(data.design))
+      debugger
       $('#template_html').val(data.html)
       $('#hidden-submit').click();
     })
