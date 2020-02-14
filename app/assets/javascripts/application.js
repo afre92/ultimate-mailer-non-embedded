@@ -16,7 +16,27 @@
 //= require popper.min
 //= require chartjs.min
 //= require paper-dashboard
-//= require demo
+// require demo
 //= require bootstrap-notify
 //= require turbolinks
 //= require_tree .
+
+
+alerts = {
+  showNotification: function(type, message) {
+    color = type;
+
+    $.notify({
+      icon: "nc-icon nc-bell-55",
+      message: message
+
+    }, {
+      type: type,
+      timer: 8000,
+      placement: {
+        from: 'top',
+        align: 'center'
+      }
+    });
+  }
+}

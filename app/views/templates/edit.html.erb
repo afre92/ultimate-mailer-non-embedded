@@ -46,6 +46,8 @@
 
 </div>
 
+<%# <button class="btn btn-primary btn-block" onclick="alerts.showNotification('top','center')">Top Center</button> %>
+
 <script>
 
   // Init Unlayer editor
@@ -73,9 +75,7 @@
   // to use front end validation
   $('#save-template').on('click', function(){
     unlayer.exportHtml(function(data) {
-      // debugger
       $('#template_body').val(JSON.stringify(data.design))
-      debugger
       $('#template_html').val(data.html)
       $('#hidden-submit').click();
     })
