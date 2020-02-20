@@ -2,7 +2,7 @@
 <div class="main-container">
   <h3 class="mb-0">Edit template content</h3>
     <div class="col-md-12 pl-0 pr-0">
-      <%= form_for @template, url: templates_update_path({shop: @shop.shopify_domain, id: @template.id, type: @template.template_type}), remote: true do |f| %>
+      <%= form_for @template, url: templates_update_path({shop: @shop.shopify_domain, id: @template.id, type: @template.template_type, token: @token}), remote: true do |f| %>
       <div class="row">
         <div class="col-md-4">
           <div class="form-group">
