@@ -2,6 +2,7 @@
 
 class Template < ApplicationRecord
   belongs_to :shop
+  has_many :emails
   validate :code
 
   def code
