@@ -7,6 +7,7 @@ class ReviewsController < ApplicationController
     if review.update(review_params)
       render json: 'thank you for your review'
     else
+      # render error page
     end
   end
 
