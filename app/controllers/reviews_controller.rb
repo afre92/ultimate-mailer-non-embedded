@@ -18,7 +18,7 @@ class ReviewsController < ApplicationController
       if @email.nil? || @email.review.nil?
         return redirect_to not_found_path
       elsif @email.review.review_status != "pending"
-        render json: 'thank you for your review'
+        render json: 'Your review has already been submitted, thank you!'
         # redirect_to thank you for submitting you review page
       end
       # find email and find the status of review
