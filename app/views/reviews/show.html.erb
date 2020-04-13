@@ -1,0 +1,10 @@
+<% review_template = ERB.new(@email.html) %>
+<div style="height: 100vh">
+<%= review_template.result(binding).html_safe %>
+</div>
+
+<style>
+.nl-container {
+  height: 100vh;
+}
+</style>

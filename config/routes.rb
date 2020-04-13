@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   get 'templates/edit'
   patch 'templates/update'
   get '/review-submission/:uuid', to: 'reviews#update'
+  get '/review-submission-on-site/:uuid', to: 'reviews#show'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
