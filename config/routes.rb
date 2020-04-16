@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   patch 'templates/update'
   get '/review-submission/:uuid', to: 'reviews#update'
   get '/review-submission-on-site/:uuid', to: 'reviews#show'
+  get '/review/:uuid/edit', to: 'reviews#edit'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

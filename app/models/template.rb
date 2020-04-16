@@ -5,6 +5,8 @@ class Template < ApplicationRecord
   has_many :emails
   validate :code
 
+  enum template_type: { thank_you: 0, review: 1}
+  
   def code
     new_html = html.gsub('&quot;', '"').gsub('&ldquo;', '"').gsub('&rdquo;', '"').gsub('&lsquo;', '"').gsub('&rsquo;', '"').gsub('&lt;', '<').gsub('&gt;', '>').gsub('&nbsp;', ' ')
     elements = new_html.scan(/\{{(.*?)}}/).flatten
