@@ -32,18 +32,6 @@ class ReviewsController < ApplicationController
   end
 
   private
-
-    # def validate_uuid
-    #   @email = Email.find_by(uuid: params[:uuid])
-    #   if @email.nil? || @email.review.nil?
-    #     return redirect_to not_found_path
-    #   elsif @email.review.review_status != "pending"
-    #     render json: 'Your review has already been submitted, thank you!'
-    #     # redirect_to thank you for submitting you review page
-    #   end
-    #   # find email and find the status of review
-    # end
-
     def validate_uuid
       @review = Review.find_by(uuid: params[:uuid])
       if @review.nil?
