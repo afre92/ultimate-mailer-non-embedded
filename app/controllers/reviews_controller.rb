@@ -29,11 +29,11 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    byebug
-    order_item = OrderItem.find(@review.order_id)
-    order = Order.find(order_item.order_id)
-    byebug
-
+    order_item = OrderItem.find(@review.order_item_id)
+    @order = Order.find(order_item.order_id)
+    @shop = Shop.find(@order.shop_id)
+    @customer = JSON.parse(@order.customer, object_class: OpenStruct)
+    @email = @order.emails.find_by(email_type: 1)
   end
 
   private
