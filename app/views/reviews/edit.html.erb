@@ -4,3 +4,8 @@
 <% review = @review %>
 <% review_template = ERB.new(@review_template.html) %>
 <%= review_template.result(binding).html_safe %>
+<style>
+.nl-container {
+  height: 100vh;
+}
+</style>

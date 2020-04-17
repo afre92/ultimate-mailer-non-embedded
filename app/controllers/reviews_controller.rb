@@ -29,6 +29,11 @@ class ReviewsController < ApplicationController
   end
 
   def show
+    byebug
+    order_item = OrderItem.find(@review.order_id)
+    order = Order.find(order_item.order_id)
+    byebug
+
   end
 
   private
