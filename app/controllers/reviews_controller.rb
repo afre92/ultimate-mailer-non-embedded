@@ -34,6 +34,7 @@ class ReviewsController < ApplicationController
     @shop = Shop.find(@order.shop_id)
     @customer = JSON.parse(@order.customer, object_class: OpenStruct)
     @email = @order.emails.find_by(email_type: 1)
+    render layout: false
   end
 
   private
