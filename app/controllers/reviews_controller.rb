@@ -11,6 +11,8 @@ class ReviewsController < ApplicationController
   end
 
   def edit
+    # find better way to get this done
+    
     order_item = OrderItem.find(@review.order_item_id)
     order = Order.find(order_item.order_id)
     @shop = Shop.find(order.shop_id)
