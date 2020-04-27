@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_06_011213) do
+ActiveRecord::Schema.define(version: 2020_04_21_222546) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 2020_02_06_011213) do
     t.bigint "order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "uuid"
+    t.integer "email_type"
     t.index ["order_id"], name: "index_emails_on_order_id"
     t.index ["shop_id"], name: "index_emails_on_shop_id"
     t.index ["template_id"], name: "index_emails_on_template_id"
@@ -53,6 +55,18 @@ ActiveRecord::Schema.define(version: 2020_02_06_011213) do
     t.index ["shop_id"], name: "index_orders_on_shop_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating", default: 0
+    t.string "title", default: ""
+    t.text "description", default: ""
+    t.integer "review_status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "order_item_id"
+    t.string "uuid", default: ""
+    t.index ["order_item_id"], name: "index_reviews_on_order_item_id"
+  end
+
   create_table "shops", force: :cascade do |t|
     t.string "shopify_domain", null: false
     t.string "shopify_token", null: false
@@ -72,6 +86,15 @@ ActiveRecord::Schema.define(version: 2020_02_06_011213) do
     t.integer "review_interval", default: 10
     t.integer "thank_you_interval", default: 10
     t.integer "status", default: 0
+    t.string "star_color", default: "#ffd700"
+    t.string "form_button_color", default: "#1775EF"
+    t.string "default_link_color", default: "#7db6ff"
+    t.string "instagram", default: ""
+    t.string "facebook", default: ""
+    t.string "twitter", default: ""
+    t.integer "payment_status", default: 0
+    t.string "charge_id", default: ""
+    t.datetime "billing_on"
     t.index ["shopify_domain"], name: "index_shops_on_shopify_domain", unique: true
   end
 
@@ -101,4 +124,5 @@ ActiveRecord::Schema.define(version: 2020_02_06_011213) do
     t.index ["template_id"], name: "index_tracking_pixels_on_template_id"
   end
 
+  add_foreign_key "reviews", "order_items"
 end
