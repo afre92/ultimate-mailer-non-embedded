@@ -22,8 +22,3 @@ task add_tokens_to_active_accounts: :environment do
     end
   end
 end
-
-# v 1.1
-# 1 check on billing_on stored in shops table
-# 2 if today then init session and check on the status of obj
-# 3 if status active then add the tokens
