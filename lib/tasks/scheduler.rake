@@ -1,6 +1,6 @@
 task add_tokens_to_active_accounts: :environment do  
   # 1 check on billing_on stored in shops table
-  shops = Shop.where(billing_on: Date.today) # check on the day of the month instead of the whole date and subscription type not 0
+  shops = Shop.where(billing_on: Date.today.day).where.not(subscription_type: 'free') # check on the day of the month instead of the whole date and subscription type not 0
   
   # 2 if today then init session and check on the status of obj
   shops.each do |shop|
