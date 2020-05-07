@@ -19,6 +19,6 @@ class Template < ApplicationRecord
   end
 
   def valid_code
-    return %w( shop.email shop.address shop.owner_first_name shop.owner_last_name shop.phone shop.shop_name shop.title shop.website customer.email customer.first_name customer.last_name )
+    return %w( product_name shop.email shop.address shop.owner_first_name shop.owner_last_name shop.phone shop.shop_name shop.title shop.website customer.email customer.first_name customer.last_name )
   end
 end
