@@ -5,6 +5,7 @@ class Template < ApplicationRecord
   has_many :emails
   validate :code
 
+  before_save :replace_quote_entities
   enum template_type: { thank_you: 0, review: 1}
   
   def code
@@ -20,5 +21,9 @@ class Template < ApplicationRecord
 
   def valid_code
     return %w( product_name shop.email shop.address shop.owner_first_name shop.owner_last_name shop.phone shop.shop_name shop.title shop.website customer.email customer.first_name customer.last_name )
+  end
+
+  def replace_quote_entities
+    self.html = html.gsub('&quot;', '"').gsub('&ldquo;', '"').gsub('&rdquo;', '"').gsub('&lsquo;', '"').gsub('&rsquo;', '"').gsub('&lt;', '<').gsub('&gt;', '>').gsub('{{', '<%=').gsub('}}', '%>')
   end
 end
