@@ -31,11 +31,8 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    order_item = OrderItem.find(@review.order_item_id)
-    @order = Order.find(order_item.order_id)
-    @shop = Shop.find(@order.shop_id)
-    @customer = JSON.parse(@order.customer, object_class: OpenStruct)
-    @email = @order.emails.find_by(email_type: 1)
+    #TODO: find better way to link reivew with email
+    @email = @review.order.emails.find_by(email_type: 1)
     render layout: false
   end
 
@@ -44,7 +41,7 @@ class ReviewsController < ApplicationController
       @review = Review.find_by(uuid: params[:uuid])
       if @review.nil?
         return redirect_to not_found_path
-      elsif @review.review_status != "pending"
+      elsif @review.review_status == "pending"
         render json: 'Your review has already been submitted, thank you!'
         # redirect_to thank you for submitting you review page
       end

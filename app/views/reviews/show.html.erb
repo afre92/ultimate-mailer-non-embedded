@@ -1,10 +1,6 @@
-<% shop = @shop %>
-<% customer = @customer %>
-<% order = @order%>
 
-<% review_template = ERB.new(@email.html) %>
 <div style="height: 100vh">
-<%= review_template.result(binding).html_safe %>
+  <%= @email.html.html_safe %>
 </div>
 
 <style>
