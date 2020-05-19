@@ -13,17 +13,10 @@ class ReviewsController < ApplicationController
   # review extra items
   def edit
      # how to pass review id to render on template
-    @review_email = @review.order.emails.build({order: @review.order, email_type: 'review'})
+    @review_email = @review.order.emails.build({order: @review.order, email_type: 'review', uuid: @review.uuid })
     render layout: false
     
   end
-
-
-  # def show
-  #   #TODO: find better way to link reivew with email
-  #   @email = @review.order.emails.find_by(email_type: 1)
-  #   render layout: false
-  # end
 
   private
     def validate_uuid

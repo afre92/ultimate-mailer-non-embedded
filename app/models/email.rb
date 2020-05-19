@@ -6,12 +6,13 @@ class Email < ApplicationRecord
   enum was_sent: { not_sent: 0, sent: 1, error: 2 }
   enum email_type: { thank_you: 0, review: 1}
 
-  attr_reader :shop, :order, :template
+  attr_reader :shop, :order, :template, :uuid
 
   def initialize(params = {})
     super
-    @shop = Shop.find(@order.shop_id)
     @order = params.fetch(:order)
+    @shop = Shop.find(@order.shop_id)
+    @uuid = params.fetch(:uuid)
     @email_type = params.fetch(:email_type)
     @template = @shop.templates.find_by(template_type: @email_type)
     add_delivery_data

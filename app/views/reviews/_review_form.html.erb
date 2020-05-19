@@ -1,5 +1,5 @@
 <div style="display: flex; justify-content: center;">
-  <form action='<%="/review-submission/#{review.uuid}"%>' style="max-width: 320px;min-width: 500px;display: table-cell;vertical-align: top;">
+  <form action='<%="/review-submission/#{uuid}"%>' style="max-width: 320px;min-width: 500px;display: table-cell;vertical-align: top;">
     <div style="text-align: center; color: blue;">
       <input type="radio" id="five" name="review[rating]" value="5">
       <label for="five"><span style="font-size:17px;line-height:23px; color:<%= shop.star_color%>" class="pr-1">★★★★★</span></label>
@@ -24,7 +24,15 @@
     <input type="hidden" id="review_status" name="review[review_status]" value="completed" style="width: 100%; height: 25px; margin-bottom: 10px"><br>
     <br><br>
     <div style="text-align: center">
-      <button type="submit" class="btn" style='background-color: <%= shop.form_button_color %>'>Submit Review</button>
+      <button type="submit" class="button" style='background-color: <%= shop.form_button_color %>'>Submit Review</button>
     </div>
   </form>
 </div>
+<style>
+    .button {
+      padding: 10px !important;
+      border-radius: 5px !important;
+      color: white !important;
+      font-weight: 500 !important;
+    }
+</style>
