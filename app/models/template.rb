@@ -7,6 +7,8 @@ class Template < ApplicationRecord
 
   before_save :replace_quote_entities
   enum template_type: { thank_you: 0, review: 1}
+
+  # create second validation by rendering templtae with test data?
   
   def code
     new_html = html.gsub('&quot;', '"').gsub('&ldquo;', '"').gsub('&rdquo;', '"').gsub('&lsquo;', '"').gsub('&rsquo;', '"').gsub('&lt;', '<').gsub('&gt;', '>').gsub('&nbsp;', ' ')

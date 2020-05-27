@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
     end
   end
 
-  # review extra items
+  # submit review on site
   def edit
      # how to pass review id to render on template
     @review_email = @review.order.emails.build({order: @review.order, email_type: 'review', uuid: @review.uuid })
