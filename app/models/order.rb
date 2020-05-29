@@ -5,7 +5,9 @@ class Order < ApplicationRecord
   has_many :emails, dependent: :destroy
 
   def customer_obj
-    return JSON.parse(customer, object_class: OpenStruct)
+    c = JSON.parse(customer, object_class: OpenStruct)
+    c['full_name'] = c['default_address']['name']
+    return c
   end
 
 end
