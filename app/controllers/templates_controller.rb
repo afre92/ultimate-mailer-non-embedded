@@ -4,6 +4,7 @@ class TemplatesController < ApplicationController
 
   def edit
     @template = @shop.templates.where(template_type: params[:type]).first
+    @valid_code = Template::VALID_CODE
   end
 
   def update

@@ -40,6 +40,15 @@
 
 </div>
 
+<div id="valid-notation">
+  Valid Notation:
+  <div>
+    <% @valid_code.each do |n| %>
+    <%= "{{ #{n} }}" %>
+    <% end %>
+  </div>
+<div>
+
 <script>
 
   // Init Unlayer editor
@@ -50,11 +59,11 @@
       displayMode: 'email',
         mergeTags: {
           first_name: {
-            name: "First Name",
+            name: "Customer first name",
             value: "{{first_name}}"
           },
           last_name: {
-            name: "Last Name",
+            name: "Customer last name",
             value: "{{last_name}}"
           }
         }

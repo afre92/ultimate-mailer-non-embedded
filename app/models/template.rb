@@ -14,18 +14,15 @@ class Template < ApplicationRecord
     new_html = html.gsub('&quot;', '"').gsub('&ldquo;', '"').gsub('&rdquo;', '"').gsub('&lsquo;', '"').gsub('&rsquo;', '"').gsub('&lt;', '<').gsub('&gt;', '>').gsub('&nbsp;', ' ')
     elements = new_html.scan(/\{{(.*?)}}/).flatten
     non_valid = []
-    valid_code = self.valid_code
     elements.each do |ele|
-      non_valid.push(ele) if !valid_code.include?(ele.delete(" ")) 
+      non_valid.push(ele) if !VALID_CODE.include?(ele.delete(" ")) 
     end
     errors.add(:invalid, " #{non_valid.join(",")} ") if non_valid.present?
-  end
-
-  def valid_code
-    return %w( customer.full_name product_name shop.email shop.address shop.owner_first_name shop.owner_last_name shop.phone shop.shop_name shop.title shop.website customer.email customer.first_name customer.last_name )
   end
 
   def replace_quote_entities
     self.html = html.gsub('&quot;', '"').gsub('&ldquo;', '"').gsub('&rdquo;', '"').gsub('&lsquo;', '"').gsub('&rsquo;', '"').gsub('&lt;', '<').gsub('&gt;', '>').gsub('{{', '<%=').gsub('}}', '%>')
   end
+
+  VALID_CODE = %w( customer.full_name product_name shop.email shop.address shop.owner_first_name shop.owner_last_name shop.phone shop.shop_name shop.title shop.website customer.email customer.first_name customer.last_name )
 end
