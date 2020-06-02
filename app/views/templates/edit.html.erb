@@ -4,19 +4,13 @@
     <div class="col-md-12 pl-0 pr-0">
       <%= form_for @template, url: templates_update_path({shop: @shop.shopify_domain, id: @template.id, type: @template.template_type, token: @token}), remote: true do |f| %>
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
           <div class="form-group">
             <label>From:</label>
             <%= f.text_field :from, class: "form-control", type: "email", placeholder: "my_email@email.com", required: true %>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <label>To:</label>
-            <input type="text" class="form-control" placeholder="customer@email.com" value="{{customer.email}}" disabled: disabled>
-          </div>
-        </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
           <div class="form-group">
             <label>Reply to:</label>
             <%= f.text_field :reply_to, class: "form-control", placeholder: "my_email@email.com", type: "email", required: true %>
@@ -41,7 +35,7 @@
     </div>
     <% end %>
     <div class="form-group text-center pb-5">
-      <button type="submit" class="btn btn-primary" id="save-template" >Save Template</button>
+      <button type="submit" class="btn btn-primary btn-round" id="save-template" >Save Template</button>
     </div>
 
 </div>

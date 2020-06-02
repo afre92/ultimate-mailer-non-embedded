@@ -7,7 +7,7 @@ if("<%= raw @saved %>" === "true"){
 } else {
   type = "danger"
   var template = "<%= raw @template.errors.messages[:invalid].first %> "
-  message = `Ooops! - invalid notation detected on <b style='font-size: larger;'>${template}</b>, change it the correct format or value to continue`
+  message = `Ooops! - invalid notation on <b style='font-size: larger;'>${template}</b>, please make a correction and try again.`
 }
 
 alerts.showNotification(type, message)
