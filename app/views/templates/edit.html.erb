@@ -34,14 +34,14 @@
         <button type="submit" class="btn btn-primary btn-round real-button" id="hidden-submit" ></button>
     </div>
     <% end %>
-    <div class="form-group text-center pb-5">
+    <div class="form-group text-center">
       <button type="submit" class="btn btn-primary btn-round" id="save-template" >Save Template</button>
     </div>
 
 </div>
 
 <div id="valid-notation">
-  Valid Notation:
+  Valid Syntax:
   <div>
     <% @valid_code.each do |n| %>
     <%= "{{ #{n} }}" %>
