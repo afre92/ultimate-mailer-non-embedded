@@ -4,6 +4,8 @@ class ReviewsController < ApplicationController
 
   def update
     if @review.update(review_params)
+      #create discount and show to user
+      
       render json: 'thank you for your review'
     else
       # render error page
