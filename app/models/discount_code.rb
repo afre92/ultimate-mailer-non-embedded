@@ -1,5 +1,5 @@
 class DiscountCode < ApplicationRecord
-  belongs_to :review
+  belongs_to :price_rule
 
   def self.create_unique_code
     loop do

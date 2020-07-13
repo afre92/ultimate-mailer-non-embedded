@@ -8,11 +8,11 @@ class ReviewsController < ApplicationController
       # price rule to create discount
       shop = Shop.find(@review.order.shop_id)
       if shop.price_rule.active
-        ShopifyAPI::Session.temp(domain: shop.shopify_domain, token: shop.shopify_token, api_version: ShopifyApp.configuration.api_version) do
-          byebug
-          discount_code = ShopifyAPI::DiscountCode.new(price_rule_id: shop.price_rule.shopify_id, code: DiscountCode.create_unique_code)
+        ShopifyAPI::Session.temp(domain: shop.shopify_domain, token: shop.shopify_token, api_version: '2019-10') do
+          discount_code = ShopifyAPI::DiscountCode.new(code: DiscountCode.create_unique_code)
+          discount_code.prefix_options[:price_rule_id] = shop.price_rule.shopify_id.to_i
           if discount_code.save
-            @review.discount_code.create(code: discount_code.code)
+            shop.price_rule.discount_code.create(code: discount_code.code)
           end
          
         end
