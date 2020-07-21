@@ -10,10 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_21_222546) do
+ActiveRecord::Schema.define(version: 2020_07_21_141829) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "discount_codes", force: :cascade do |t|
+    t.string "code"
+    t.bigint "shop_id"
+    t.bigint "price_rule_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["price_rule_id"], name: "index_discount_codes_on_price_rule_id"
+    t.index ["shop_id"], name: "index_discount_codes_on_shop_id"
+  end
 
   create_table "emails", force: :cascade do |t|
     t.datetime "scheduled_time"
@@ -25,6 +56,9 @@ ActiveRecord::Schema.define(version: 2020_04_21_222546) do
     t.bigint "order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "from", default: ""
+    t.string "to", default: ""
+    t.string "subject", default: ""
     t.string "uuid"
     t.integer "email_type"
     t.index ["order_id"], name: "index_emails_on_order_id"
@@ -41,6 +75,7 @@ ActiveRecord::Schema.define(version: 2020_04_21_222546) do
     t.integer "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "shopify_product_id"
     t.index ["order_id"], name: "index_order_items_on_order_id"
   end
 
@@ -52,18 +87,40 @@ ActiveRecord::Schema.define(version: 2020_04_21_222546) do
     t.jsonb "customer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "order_number", default: ""
+    t.string "order_status_url", default: ""
     t.index ["shop_id"], name: "index_orders_on_shop_id"
   end
 
+  create_table "price_rules", force: :cascade do |t|
+    t.bigint "shop_id"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.boolean "active", default: false
+    t.string "title"
+    t.integer "value"
+    t.integer "value_type"
+    t.string "shopify_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shop_id"], name: "index_price_rules_on_shop_id"
+  end
+
   create_table "reviews", force: :cascade do |t|
+    t.bigint "email_id"
     t.integer "rating", default: 0
     t.string "title", default: ""
     t.text "description", default: ""
     t.integer "review_status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "exported", default: false
     t.bigint "order_item_id"
     t.string "uuid", default: ""
+    t.datetime "submitted_on"
+    t.string "shopify_product_id"
+    t.string "customer_name"
+    t.index ["email_id"], name: "index_reviews_on_email_id"
     t.index ["order_item_id"], name: "index_reviews_on_order_item_id"
   end
 
@@ -75,7 +132,7 @@ ActiveRecord::Schema.define(version: 2020_04_21_222546) do
     t.datetime "updated_at", null: false
     t.string "email", default: ""
     t.integer "subscription_type", default: 0
-    t.float "tokens", default: 10.0
+    t.float "tokens", default: 100.0
     t.string "address", default: ""
     t.string "owner_first_name", default: ""
     t.string "owner_last_name", default: ""
@@ -89,12 +146,16 @@ ActiveRecord::Schema.define(version: 2020_04_21_222546) do
     t.string "star_color", default: "#ffd700"
     t.string "form_button_color", default: "#1775EF"
     t.string "default_link_color", default: "#7db6ff"
-    t.string "instagram", default: ""
-    t.string "facebook", default: ""
-    t.string "twitter", default: ""
+    t.string "instagram", default: "https://www.instagram.com/"
+    t.string "facebook", default: "https://www.facebook.com/"
+    t.string "twitter", default: "https://twitter.com/"
+    t.boolean "onboarding_completed", default: false
+    t.string "timezone", default: "America/New_York"
     t.integer "payment_status", default: 0
     t.string "charge_id", default: ""
-    t.datetime "billing_on"
+    t.integer "billing_on"
+    t.integer "thank_you_status", default: 0
+    t.integer "review_status", default: 0
     t.index ["shopify_domain"], name: "index_shops_on_shopify_domain", unique: true
   end
 
@@ -124,5 +185,6 @@ ActiveRecord::Schema.define(version: 2020_04_21_222546) do
     t.index ["template_id"], name: "index_tracking_pixels_on_template_id"
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "reviews", "order_items"
 end
