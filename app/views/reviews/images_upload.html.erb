@@ -1,0 +1,11 @@
+
+
+<div style="display: flex; justify-content: center;">
+  <%= form_for @review, url: review_submission_path(@review.uuid), method: 'get' do |f| %>
+  <%= f.file_field :images, multiple: true, direct_upload: true, class:'form-control'  %>
+  <%# <input type="hidden" id="review_review_status" name="review[review_status]" value="completed" /> %>
+  <%= f.submit %>
+  <% end %>
+</div>
+
+<%= image_tag(@review.images.first) %>
