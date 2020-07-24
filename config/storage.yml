@@ -13,6 +13,8 @@ amazon:
   secret_access_key: <%= ENV['S3_SECRET_ACCESS_KEY'] %>
   region: us-east-1
   bucket: ultimate-mailer
+  upload: 
+    acl: "public-read"
 
 # Remember not to checkin your GCS keyfile to a repository
 # google:
