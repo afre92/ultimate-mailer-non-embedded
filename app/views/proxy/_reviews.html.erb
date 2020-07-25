@@ -48,7 +48,8 @@
     </div>
     <div style="padding-bottom: 20px;">
     <% review.images.each do |image| %>
-      <img src='<%="#{ENV["S3_URL"]}#{image.blob.key}"%>' /> 
+      <%# <img src='<%="#{ENV["S3_URL"]}#{image.blob.key}"%>
+      <%= image_tag(image.service_url) %>
     <% end %>
     </div>
   </div>
