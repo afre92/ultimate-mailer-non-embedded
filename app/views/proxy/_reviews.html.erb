@@ -49,7 +49,7 @@
     <div style="padding-bottom: 20px;">
     <% review.images.each do |image| %>
       <%# <img src='<%="#{ENV["S3_URL"]}#{image.blob.key}"%>
-      <%= image_tag(image.service_url) %>
+      <%= image_tag(image.variant(resize_to_limit: [100, 100])) %>
     <% end %>
     </div>
   </div>
