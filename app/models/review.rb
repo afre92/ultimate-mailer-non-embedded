@@ -9,4 +9,12 @@ class Review < ApplicationRecord
   def submitted_on
     self.submitted_on = DateTime.now.utc
   end
+
+  def rating_stars(color = '#ffd700')
+    total=[] 
+    rating.times do |t|
+      total << '★' 
+    end 
+    return "<span style='color:#{color};'>#{total.join('')}</span>".html_safe
+  end
 end

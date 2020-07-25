@@ -2,7 +2,9 @@
 
 class Shop < ApplicationRecord
   has_many :templates
+  has_many :orders, dependent: :destroy
   has_one :price_rule
+  has_many :reviews, through: :orders
   enum subscription_type: { free: 0, basic: 1, pro: 2 }
 
   def temp_session(*args)
