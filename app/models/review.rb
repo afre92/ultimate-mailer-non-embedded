@@ -17,4 +17,7 @@ class Review < ApplicationRecord
     end 
     return "<span style='color:#{color};'>#{total.join('')}</span>".html_safe
   end
+
+
+
 end

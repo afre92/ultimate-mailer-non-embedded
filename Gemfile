@@ -13,9 +13,9 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.12'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
-gem "image_processing"
-# gem "mini_magick"
-# gem 'rmagick'
+# gem "image_processing"
+gem "mini_magick", '~> 4.8' 
+gem 'rmagick'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
