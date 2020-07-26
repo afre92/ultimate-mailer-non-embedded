@@ -2,15 +2,23 @@ require 'openssl'
 require 'rack/utils'
 
 class ProxyController < ActionController::Base
-  before_action :verify_signature
+  before_action :verify_signature, only: :router
 
   def reviews
     # find id of the product
      # its going to be an id on a div
     # get all reviews for product
     @reviews = @shop.reviews.where(shopify_product_id: params[:id]).paginate(page: params[:page], per_page: 10)
-    # @customer
     render :partial => 'reviews' , locals: {reviews: @reviews}
+  end
+
+  def review_images
+    # find review and get all amages
+    render :partial => 'review_images'
+  end
+
+  def router
+    self.send(params[:method])
   end
 
   private

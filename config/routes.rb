@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   #submit from form in email
   get '/review-submission/:uuid', to: 'reviews#update', as: 'review_submission'
   # review extra items on order
-  get '/proxy-reviews', to: 'proxy#reviews'
+  get '/proxy', to: 'proxy#router'
   get '/review/:uuid/edit', to: 'reviews#edit'
   get '/review/:uuid/upload-images', to: 'reviews#images_upload'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

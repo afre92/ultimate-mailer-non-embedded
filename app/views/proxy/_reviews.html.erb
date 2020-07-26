@@ -1,4 +1,9 @@
 <style>
+.review-photo {
+  cursor: pointer;
+} 
+
+
 .pagination {
   padding: 3px;
   margin: 3px;
@@ -47,9 +52,11 @@
       <%= review.description %>
     </div>
     <div style="padding-bottom: 20px;">
-    <% review.images.each do |image| %>
-      <%= image_tag_remote(image.variant(resize: '300x300')) %>
-    <% end %>
+      <div class="review-images-wrapper" data-review-id="<%= review.id %>">
+        <% review.images.each do |image| %>
+          <%= image_tag_remote(image.variant(resize: '100x100')) %>
+        <% end %>
+      </div>
     </div>
   </div>
 <% end %>
