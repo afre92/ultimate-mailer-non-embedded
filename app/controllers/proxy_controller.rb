@@ -14,6 +14,7 @@ class ProxyController < ActionController::Base
 
   def review_images
     # find review and get all amages
+    @review = @shop.reviews.find(params[:review_id])
     render :partial => 'review_images'
   end
 
