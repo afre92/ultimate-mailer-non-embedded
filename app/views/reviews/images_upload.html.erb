@@ -1,12 +1,20 @@
 
 
-<div style="display: flex; justify-content: center;">
-  <%= form_for @review, url: review_submission_path(@review.uuid), method: 'get' do |f| %>
-  <%= f.file_field :images, multiple: true, direct_upload: true, class:'form-control'  %>
+<div style="display: flex; justify-content: center; width: 1024px;">
+  <%= form_for @review, url: review_submission_path(@review.uuid), method: 'get', html: {class: 'form'} do |f| %>
+  <%= f.file_field :images, multiple: true, direct_upload: true, class:'form-control dropzone' %>
   <%# <input type="hidden" id="review_review_status" name="review[review_status]" value="completed" /> %>
-  <%= f.submit %>
+  <%= f.submit class: 'submit-form', style: "" %>
   <% end %>
+    <%# <button id="submit-review-photos"> submit</button> %>
 </div>
-<% byebug %>
 <%# another options to generate the real url and save it as attribute %>
-<%= image_tag(@review.images.first) %>
+
+<script>
+$('#submit-review-photos').click(function(){
+  $('.submit-form').click();
+})
+</script>
+
+
+<%# invalid signature if form does not have input field %>
