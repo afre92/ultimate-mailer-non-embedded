@@ -1,5 +1,17 @@
 {
   "name": "ultimate-mailer-non-e",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@excid3/uppy-activestorage-upload": "https://github.com/excid3/uppy-activestorage-upload.git",
+    "@rails/activestorage": "^6.0.3-2",
+    "@rails/ujs": "^6.0.3-2",
+    "@rails/webpacker": "5.1.1",
+    "@uppy/core": "^1.12.2",
+    "@uppy/dashboard": "^1.12.2",
+    "rails-ujs": "^5.2.4-3",
+    "turbolinks": "^5.2.0"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.11.0"
+  }
 }

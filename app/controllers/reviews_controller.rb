@@ -23,7 +23,7 @@ class ReviewsController < ApplicationController
   end
 
   def images_upload
-
+    # byebug
   end
 
 
