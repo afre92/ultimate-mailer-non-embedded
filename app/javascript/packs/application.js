@@ -20,7 +20,7 @@ console.log('hello ')
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
-// require("channels")
+require("jquery")
 
 const Uppy = require('@uppy/core')
 const Dashbord = require('@uppy/dashboard')
@@ -34,9 +34,7 @@ require('@uppy/dashboard/dist/style.css')
 
 document.addEventListener('turbolinks:load', () => {
   console.log('ROLO')
-  document.querySelectorAll('[data-uppy]').forEach(element => {
-    element.preventDefault();
-    setupUppy(element)})
+  document.querySelectorAll('[data-uppy]').forEach(element => setupUppy(element))
 })
 
 function setupUppy(element) {
