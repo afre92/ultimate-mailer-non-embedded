@@ -3,7 +3,6 @@ class ReviewsController < ApplicationController
   before_action :validate_uuid
 
   def update
-    byebug
     if @review.update(review_params)
       if @review.review_status == 'completed'
         if @shop.price_rule.active
@@ -50,7 +49,7 @@ class ReviewsController < ApplicationController
 
 
     def review_params
-      params.require(:review).permit( :rating, :title, :description, :review_status, :images)
+      params.require(:review).permit( :rating, :title, :description, :review_status, images: [])
     end
 end
   

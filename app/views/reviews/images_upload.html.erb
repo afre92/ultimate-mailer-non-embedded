@@ -1,13 +1,12 @@
 <div style="display: flex; justify-content: center;">
   <%= form_for @review, url: review_submission_path(@review.uuid), method: 'get', html: {class: 'form'} do |f| %>
 
-    <div class="form-group" data-uppy="review[images]">
+    <div class="form-group" data-uppy="review[images][]">
       <div class="dashboard"></div>
-      
-      <%# <%= f.hidden_field :review_status, value: 'completed' %>
-      <%= link_to "Upload", "#", id: 'uppy-trigger', data: {behavior: 'uppy-trigger'} %>
+      <%= f.hidden_field :review_status, value: 'completed' %>
     </div>
-    <%= f.submit class: 'submit-for', style: "" %>
+
+    <%= f.submit class: 'submit-form'%>
   <% end %>
 </div>
 

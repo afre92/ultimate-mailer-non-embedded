@@ -35,13 +35,10 @@ document.addEventListener('turbolinks:load', () => {
 })
 
 function setupUppy(element) {
-  let trigger = element.querySelector('[data-behavior="uppy-trigger"]')
   
   let form = element.closest('form')
   let direct_upload_url = document.querySelector("meta[name='direct-upload-url']").getAttribute('content')
   let field_name = element.dataset.uppy
-
-  trigger.addEventListener('click',(event) => event.preventDefault())
 
   let uppy = Uppy({
     autoProceed: false,
@@ -55,7 +52,6 @@ function setupUppy(element) {
 
   uppy.use(Dashbord, {
     target: '.dashboard',
-    // trigger: trigger,
     inline: true,
     closeAfterFinish: false
     
@@ -64,7 +60,7 @@ function setupUppy(element) {
   uppy.on('complete', (result) => {
     result.successful.forEach( file => {
       appendUploadedFile(element, file, field_name)
-      // form.submit()
+      form.submit()
     })
   })
 
@@ -73,8 +69,6 @@ function setupUppy(element) {
 
 function appendUploadedFile(element, file, field_name){
   var hiddenField = document.createElement('input')
-  debugger
-  console.log('here mf')
   hiddenField.setAttribute('type', 'hidden')
   hiddenField.setAttribute('name', field_name)
   hiddenField.setAttribute('data-pending-upload', true)
