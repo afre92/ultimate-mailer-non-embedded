@@ -26,14 +26,11 @@ const Uppy = require('@uppy/core')
 const Dashbord = require('@uppy/dashboard')
 const ActiveStorageUpload = require("@excid3/uppy-activestorage-upload")
 
-
-
-// require('@uppy/core/dist/style.css')
+require('@uppy/core/dist/style.css')
 require('@uppy/dashboard/dist/style.css')
 
 
 document.addEventListener('turbolinks:load', () => {
-  console.log('ROLO')
   document.querySelectorAll('[data-uppy]').forEach(element => setupUppy(element))
 })
 
@@ -44,8 +41,10 @@ function setupUppy(element) {
   let direct_upload_url = document.querySelector("meta[name='direct-upload-url']").getAttribute('content')
   let field_name = element.dataset.uppy
 
+  trigger.addEventListener('click',(event) => event.preventDefault())
+
   let uppy = Uppy({
-    autoProceed: true,
+    autoProceed: false,
     allowMultipleUploads: false,
     logger: Uppy.debugLogger
   })
@@ -55,7 +54,16 @@ function setupUppy(element) {
   })
 
   uppy.use(Dashbord, {
+    target: '.dashboard',
     trigger: trigger,
+    inline: true,
     closeAfterFinish: false
+    
   })
+
+  uppy.on('complete', (result) => {
+    result.successful( form.submit() )
+  })
+
+
 }

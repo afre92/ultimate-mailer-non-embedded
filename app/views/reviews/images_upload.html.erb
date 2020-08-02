@@ -1,29 +1,18 @@
-
-
-<div style="display: flex; justify-content: center; width: 1024px;">
+<div style="display: flex; justify-content: center;">
   <%= form_for @review, url: review_submission_path(@review.uuid), method: 'get', html: {class: 'form'} do |f| %>
-  <%# <%= f.file_field :images, multiple: true, direct_upload: true, class:'form-control dropzone' %> 
-  <div class="form-group" data-uppy="review[images]">
-    <%= f.label :images %>
-    <div>
-      <img src="" alt data-behavior="uppy-review" />
+    <div class="form-group" data-uppy="review[images]">
+      <div class="dashboard"></div>
+      <%= f.hidden_field :review_status, value: 'completed' %>
+      <%= link_to "Upload", "#", id: 'uppy-trigger', data: {behavior: 'uppy-trigger'} %>
     </div>
-    <%= link_to "Upload", "#", id: 'uppy-trigger', data: {behavior: 'uppy-trigger'} %>
-    
-    <%# <span data-behavior="uppy-trigger">Upload<span> %>
-  </div>
-  <%= f.submit class: 'submit-form', style: "" %>
+    <%= f.submit class: 'submit-form', style: "" %>
   <% end %>
-
 </div>
-<%# another options to generate the real url and save it as attribute %>
-
-<script>
-$('#uppy-trigger').on('click', function(e){
-  // debugger
-  e.preventDefault();
-})
-</script>
 
 
-<%# invalid signature if form does not have input field %>
+
+<style>
+.uppy-Dashboard-inner {
+  margin: auto;
+}
+</style>
