@@ -55,15 +55,31 @@ function setupUppy(element) {
 
   uppy.use(Dashbord, {
     target: '.dashboard',
-    trigger: trigger,
+    // trigger: trigger,
     inline: true,
     closeAfterFinish: false
     
   })
 
   uppy.on('complete', (result) => {
-    result.successful( form.submit() )
+    result.successful.forEach( file => {
+      appendUploadedFile(element, file, field_name)
+      // form.submit()
+    })
   })
 
+
+}
+
+function appendUploadedFile(element, file, field_name){
+  var hiddenField = document.createElement('input')
+  debugger
+  console.log('here mf')
+  hiddenField.setAttribute('type', 'hidden')
+  hiddenField.setAttribute('name', field_name)
+  hiddenField.setAttribute('data-pending-upload', true)
+  hiddenField.setAttribute('value', file.response.signed_id)
+  
+  element.appendChild(hiddenField)
 
 }
