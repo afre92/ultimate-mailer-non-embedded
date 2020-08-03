@@ -54,7 +54,6 @@ function setupUppy(element) {
     target: '.dashboard',
     inline: true,
     closeAfterFinish: false
-    
   })
 
   uppy.on('complete', (result) => {
@@ -63,8 +62,6 @@ function setupUppy(element) {
       form.submit()
     })
   })
-
-
 }
 
 function appendUploadedFile(element, file, field_name){
@@ -75,5 +72,4 @@ function appendUploadedFile(element, file, field_name){
   hiddenField.setAttribute('value', file.response.signed_id)
   
   element.appendChild(hiddenField)
-
 }
