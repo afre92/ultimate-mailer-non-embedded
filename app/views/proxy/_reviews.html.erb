@@ -224,60 +224,7 @@
   color: #ddd;
 }
 
-/* Style for rating stars */
-.star-ratings-css {
-  unicode-bidi: bidi-override;
-  color: #c5c5c5;
-  font-size: 25px;
-  height: 25px;
-  width: 100px;
-  margin: 0 auto;
-  position: relative;
-  text-shadow: 0 1px 0 #a2a2a2;
-} 
-.star-ratings-css::before { 
-  content: '★★★★';
-  opacity: .3;
-}
-
-[title=".000"]::after {
-  width: 0%;
-}
-[title=".125"]::after {
-  width: 12.5%;
-}
-[title=".250"]::after {
-  width: 25%;
-}
-[title=".375"]::after {
-  width: 37.5%;
-}
-[title=".500"]::after {
-  width: 50%;
-}
-[title=".625"]::after {
-  width: 62.5%;
-}
-[title=".750"]::after {
-  width: 75%;
-}
-[title=".875"]::after {
-  width: 87.5%;
-}
-.star-ratings-css::after {
-  color: gold;
-  content: '★★★★';
-  text-shadow: 0 1px 0 #ab5414;
-  position: absolute;
-  z-index: 1;
-  display: block;
-  left: 0;
-  top:0;
-  width: attr(rating);
-  overflow: hidden;
-}
-
-/*  */
+/* start of rating */
 
 .ue-rating {
   display: inline-block;
@@ -309,6 +256,40 @@
 }
 
 /* End of style for rating stars */
+
+
+/* start of small rating */
+
+.ue-small-rating {
+  display: inline-block;
+  unicode-bidi: bidi-override;
+  color: #efefef;
+  font-size: 20px;
+  height: 20px;
+  width: auto;
+  margin: 0;
+  position: relative;
+  padding: 0;
+}
+
+.ue-small-rating-upper {
+  color: #ffd700;
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.ue-small-rating-lower {
+  padding: 0;
+  display: flex;
+  z-index: 0;
+}
+
+/* End of style for small rating stars */
 </style>
 
   <div class="ue-rating">
@@ -326,13 +307,15 @@
         <span>★</span>
         <span>★</span>
     </div>
+  </div>
+  <br>
+<div id="ue-total-review-description" data-reviews-count="<%= reviews.count %>" data-reviews-median="<%= media %>">
+  <span><%= media %></span> <span>Based on <%= reviews.count %> reviews</span>
 </div>
 <br>
-<div>
-<span><%= media %></span> <span>Based on <%= reviews.count %> reviews</span>
 </div>
-<br>
-</div>
+
+
 
 <% reviews.each do |review| %>
   <div class="review" style="border-bottom: 1px black solid; padding-top: 10px;">
@@ -363,11 +346,7 @@
 <div id='reviews-pagination'>
   <%= will_paginate @reviews , params: {daterange: @daterange} %>
 </div>
-<%# use js to prevent default and and make get with url %>
 
-<%# <div class="ue-page-wrapper">
-  <a class="btn ue-trigger" href="javascript:;">Click Me!</a>
-</div> %>
 <div class="ue-modal-wrapper">
   <div class="ue-modal">
     <div class="ue-head">
