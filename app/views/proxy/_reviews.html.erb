@@ -239,7 +239,7 @@
 }
 
 .ue-rating-upper {
-  color: #ffd700;
+  color: <%= @shop.star_color %>;
   padding: 0;
   position: absolute;
   z-index: 1;
@@ -272,25 +272,28 @@
   padding: 0;
 }
 
-.ue-small-rating-upper {
-  color: #ffd700;
-  padding: 0;
-  position: absolute;
-  z-index: 1;
-  display: flex;
-  top: 0;
-  left: 0;
-  overflow: hidden;
+.big-median {
+  font-size: 40px;
+  font-weight: 600;
 }
 
-.ue-small-rating-lower {
-  padding: 0;
-  display: flex;
-  z-index: 0;
+.ue-review {
+  border: 1px solid #eee;
+  margin-bottom: 30px;
+  padding-top: 25px;
+  padding: 24px;
+  background-color: #fafafa;
 }
 
+.ue-review-content {
+  margin: 0 0 15px;
+  clear: both;
+}
 /* End of style for small rating stars */
 </style>
+          <div id="ue-customer-reviews-title" >
+            <h2 style="margin-bottom: 0px;" >Customer Reviews</h2>
+          </div>
 
   <div class="ue-rating">
     <div class="ue-rating-upper" style="width: <%=media*10*2%>%;">
@@ -309,8 +312,8 @@
     </div>
   </div>
   <br>
-<div id="ue-total-review-description" data-reviews-count="<%= reviews.count %>" data-reviews-median="<%= media %>">
-  <span><%= media %></span> <span>Based on <%= reviews.count %> reviews</span>
+<div id="ue-total-review-description" style="" data-reviews-count="<%= reviews.count %>" data-reviews-median="<%= media %>">
+  <span class="big-median"><%= media %></span> <span> Based on <%= reviews.count %> reviews</span>
 </div>
 <br>
 </div>
@@ -318,13 +321,19 @@
 
 
 <% reviews.each do |review| %>
-  <div class="review" style="border-bottom: 1px black solid; padding-top: 10px;">
-    <div>
-      <%= review.rating_stars(@shop.star_color) %>
+  <div class="ue-review">
+    <div class="ue-review-content">
+    <div style="display: flex; justify-content: space-between; width: 100%;">
+      <div class="col-md-10">
+        <%= review.rating_stars(@shop.star_color) %>
+      </div>
+      <div class="col-md-2">
+        <%= review.updated_at.strftime('%D') %>
+      </div>
     </div>
     <div style="padding-top:10px; padding-bottom: 10px;">
       <div>
-        <b><%= review.title %> </b>
+        <b><%= review.title.upcase %> </b>
       </div>
       <div>
         <%= review.customer_name %>
@@ -333,13 +342,13 @@
     <div style="">
       <%= review.description %>
     </div>
-    <div style="padding-bottom: 20px;">
+    <div>
       <div class="review-images-wrapper" data-review-id="<%= review.id %>">
         <% review.images.each do |image| %>
-        
           <%= image_tag_remote(image.variant(resize: '100x100')) %>
         <% end %>
       </div>
+    </div>
     </div>
   </div>
 <% end %>
