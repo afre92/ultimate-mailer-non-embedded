@@ -29,10 +29,10 @@
 
 /* TODO: make modal responsive */
 .ue-modal{
-  width:600px;
+  width:800px;
   height:auto;
   display:block;
-  margin:50% 0 0 -300px;
+  margin:50% 0 0 -400px;
   position:relative;
   top:50%; left:50%;
   background:#fff;
@@ -49,12 +49,38 @@
 }
 
 .ue-head{
-  width:90%;
+  /* width:90%;
   height:32px;
-  padding:1.5em 5%;
+  padding:1.5em 5%; */
   overflow:hidden;
-  background:#01bce5;
+  /* background:#01bce5; */
 }
+
+/* styles for x button to close modal */
+.close {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    margin-left: auto;
+}
+.close:after {
+    content: '';
+    height: 60px;
+    border-left: 2px solid #000;
+    position: absolute;
+    transform: rotate(45deg);
+    left: 28px;
+}
+
+.close:before {
+    content: '';
+    height: 60px;
+    border-left: 2px solid #000;
+    position: absolute;
+    transform: rotate(-45deg);
+    left: 28px;
+}
+/* end of styles for x button to close modal */
 
 .ue-btn-close{
   width:32px;
@@ -63,13 +89,6 @@
   float:right;
 }
 
-.ue-btn-close::before, .ue-btn-close::after{
-  content:'';
-  width:32px;
-  height:6px;
-  display:block;
-  background:#fff;
-}
 
 .ue-btn-close::before{
   margin-top:12px;
@@ -88,7 +107,7 @@
 }
 
 .ue-content{
-  padding:5%;
+  padding:2%;
 }
 
 /* End of styles for modal */
@@ -133,17 +152,6 @@
 /* On hover, add a black background color with a little bit see-through */
 .prev:hover, .next:hover {
   background-color: rgba(0,0,0,0.8);
-}
-
-/* Caption text */
-.text {
-  color: #f2f2f2;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
 }
 
 /* Number text (1/3 etc) */
@@ -358,11 +366,7 @@
 
 <div class="ue-modal-wrapper">
   <div class="ue-modal">
-    <div class="ue-head">
-      <a class="ue-btn-close ue-trigger" href="javascript:;"></a>
-    </div>
     <div class="ue-content">
-      adsfasdf
     </div>
   </div>
 </div>
