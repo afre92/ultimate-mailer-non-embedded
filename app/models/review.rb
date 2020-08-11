@@ -32,6 +32,15 @@ class Review < ApplicationRecord
     return "<span style='color:#{color};'>#{total.join('')}</span>".html_safe
   end
 
+  def customer_name_abbreviated
+    first, last = Review.last.customer_name.split(' ')
+    if !last.nil?
+      return "#{first} #{last.first}."
+    else
+      return "#{first}"
+    end
+    
+  end
 
 
 end
