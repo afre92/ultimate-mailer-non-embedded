@@ -33,9 +33,9 @@
   height:auto;
   min-height: 60vh;
   display:block;
-  margin:50% 0 0 -30vw;
+  margin:50vh 0 0 -30vw;
   position:relative;
-  top:50%; left:50%;
+  top:150vh; left:50vw;
   background:#fff;
   opacity:0;
   -webkit-transition: all 0.5s ease-in-out;
@@ -308,8 +308,92 @@
 }
 /* End of style for small rating stars */
 
-body.modal-open {
+/* body.modal-open {
     overflow: hidden;
+} */
+
+.modal-window {
+  position: fixed;
+  /* display: none; */
+  background-color: rgba(255, 255, 255, 0.25);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  visibility: hidden;
+  opacity: 0
+  pointer-events: none;
+  transition: all 0.3s;
+}
+ .modal-window:target {
+	 /* visibility: visible; */
+
+}
+
+.visible {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  display: inherit !important;
+}
+
+
+ .modal-window > div {
+	 width: 60%;
+	 position: absolute;
+	 top: 50%;
+	 left: 50%;
+	 transform: translate(-50%, -50%);
+	 padding: 2em;
+	 background: #fff;
+}
+ .modal-window header {
+	 font-weight: bold;
+}
+ .modal-window h1 {
+	 font-size: 150%;
+	 margin: 0 0 15px;
+}
+ .modal-close {
+	 color: #aaa;
+	 line-height: 50px;
+	 font-size: 80%;
+	 position: absolute;
+	 right: 0;
+	 text-align: center;
+	 top: 0;
+	 width: 70px;
+	 text-decoration: none;
+}
+ .modal-close:hover {
+	 color: black;
+}
+/* Demo Styles */
+
+
+ a {
+	 color: inherit;
+}
+ .ue-container {
+	 display: grid;
+	 justify-content: center;
+	 align-items: center;
+}
+ .modal-window div:not(:last-of-type) {
+	 margin-bottom: 15px;
+}
+ small {
+	 color: #aaa;
+}
+ .btn {
+	 background-color: #fff;
+	 padding: 1em 1.5em;
+	 border-radius: 3px;
+	 text-decoration: none;
+}
+ .btn i {
+	 padding-right: 0.3em;
 }
 </style>
           <div id="ue-customer-reviews-title" >
@@ -377,18 +461,35 @@ body.modal-open {
   <%= will_paginate @reviews , params: {daterange: @daterange} %>
 </div>
 
-<div class="ue-modal-wrapper">
-  <div class="ue-modal">
-    <div class="ue-content">
-    </div>
+
+
+<div class="ue-container">
+  <div class="interior">
+    <a class="btn" id="open-modal-btn" href="#open-modal">👋 Basic CSS-Only Modal</a>
   </div>
 </div>
+  <%# <div id="open-modal" class="modal-window">
+  <div>
+    <a href="#" title="Close" class="modal-close">Close</a>
+    <h1>Voilà!</h1>
+    <div>A CSS-only modal based on the :target pseudo-class. Hope you find it helpful.</div>
+    <div><small>Check out</small></div>
+    <a href="https://aminoeditor.com" target="_blank">👉 Amino: Live CSS Editor for Chrome</div>
+    </div>
+</div> %>
 
+
+
+
+    <%# <div class="background-content">
+        lengthy content here
+    </div> %>
+            
 <script>
-// $("body").on("", '.ue-modal-wrapper' , function () {
-//   console.log('its opened')
-//   $("body").addClass("modal-open");
-// }).on("hidden", function () {
-//   $("body").removeClass("modal-open")
-// });
+$('body').on('click', '#open-modal-btn',function(){
+  $('.modal-window').addClass('visible');
+})
+$('body').on('click', 'a.modal-close',function(){
+  $('.modal-window').removeClass('visible');
+})
 </script>
