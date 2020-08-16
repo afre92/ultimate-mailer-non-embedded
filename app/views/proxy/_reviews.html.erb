@@ -1,82 +1,30 @@
 <style>
-/* Styles for modal pop up */
-.ue-blur{
-  -webkit-filter: blur(5px);
-  -moz-filter: blur(5px);
-  -o-filter: blur(5px);
-  -ms-filter: blur(5px);
-  filter: blur(5px);
-}
 
-.ue-modal-wrapper{
-  width:100%;
-  height:100%;
-  position:fixed;
-  top:0; left:0;
-  background:rgba(47, 47, 47, 0.6);
-  display: none;
-  opacity:0;
-  -webkit-transition: all 0.25s ease-in-out;
-  -moz-transition: all 0.25s ease-in-out;
-  -o-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
-}
-
-.ue-modal-wrapper.open{
-  opacity:1;
-  display:inherit ;
-}
-
-/* TODO: make modal responsive */
-.ue-modal{
-  width:60vw;
-  height:auto;
-  min-height: 60vh;
-  display:block;
-  margin:50vh 0 0 -30vw;
-  position:relative;
-  top:150vh; left:50vw;
-  background:#fff;
-  opacity:0;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
-}
-
-.ue-modal-wrapper.open .ue-modal{
-  margin-top:-200px;
-  opacity:1;
-}
-
-.ue-head{
-  overflow:hidden;
-}
-
+.row{display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-right:-15px;margin-left:-15px}
 /* styles for x button to close modal */
 .close {
-    width: 40px;
-    height: 40px;
-    position: relative;
-    margin-left: auto;
-    cursor: pointer;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  margin-left: auto;
+  cursor: pointer;
 }
 .close:after {
-    content: '';
-    height: 40px;
-    border-left: 2px solid #000;
-    position: absolute;
-    transform: rotate(45deg);
-    left: 24px;
+  content: '';
+  height: 40px;
+  border-left: 2px solid #000;
+  position: absolute;
+  transform: rotate(45deg);
+  left: 24px;
 }
 
 .close:before {
-    content: '';
-    height: 40px;
-    border-left: 2px solid #000;
-    position: absolute;
-    transform: rotate(-45deg);
-    left: 24px;
+  content: '';
+  height: 40px;
+  border-left: 2px solid #000;
+  position: absolute;
+  transform: rotate(-45deg);
+  left: 24px;
 }
 /* end of styles for x button to close modal */
 
@@ -111,7 +59,6 @@
 /* End of styles for modal */
 
 /* Start of styles for slideshow */
-* {box-sizing:border-box}
 
 /* Slideshow container */
 .slideshow-container {
@@ -131,7 +78,7 @@
   position: absolute;
   top: 50%;
   width: auto;
-  right: -60px;
+  right: -80px;
   margin-top: -22px;
   padding: 16px;
   color: white;
@@ -144,7 +91,7 @@
   position: absolute;
   top: 50%;
   width: auto;
-  left: -60px;
+  left: -80px;
   margin-top: -22px;
   padding: 16px;
   color: white;
@@ -308,29 +255,22 @@
 }
 /* End of style for small rating stars */
 
-/* body.modal-open {
-    overflow: hidden;
-} */
+/* SO review images modal */
 
-.modal-window {
+.ue-review-images-modal {
   position: fixed;
-  /* display: none; */
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: rgba(0, 0, 0, 0.5);
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   z-index: 999;
   visibility: hidden;
-  opacity: 0
+  opacity: 0;
   pointer-events: none;
   transition: all 0.3s;
 }
- .modal-window:target {
-	 /* visibility: visible; */
-
-}
-
+/* change this name */
 .visible {
   visibility: visible;
   opacity: 1;
@@ -338,67 +278,733 @@
   display: inherit !important;
 }
 
+.ue-review-images-modal > div {
+  width: 60%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2em;
+  background: #fff;
+}
+.ue-review-images-modal header {
+  font-weight: bold;
+}
+.ue-review-images-modal h1 {
+  font-size: 150%;
+  margin: 0 0 15px;
+}
 
- .modal-window > div {
-	 width: 60%;
-	 position: absolute;
-	 top: 50%;
-	 left: 50%;
-	 transform: translate(-50%, -50%);
-	 padding: 2em;
-	 background: #fff;
+.modal-close {
+  color: #aaa;
+  line-height: 50px;
+  font-size: 80%;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: 70px;
+  text-decoration: none;
 }
- .modal-window header {
-	 font-weight: bold;
+.modal-close:hover {
+  color: black;
 }
- .modal-window h1 {
-	 font-size: 150%;
-	 margin: 0 0 15px;
+
+.ue-review-images-modal div:not(:last-of-type) {
+  margin-bottom: 15px;
 }
- .modal-close {
-	 color: #aaa;
-	 line-height: 50px;
-	 font-size: 80%;
-	 position: absolute;
-	 right: 0;
-	 text-align: center;
-	 top: 0;
-	 width: 70px;
-	 text-decoration: none;
-}
- .modal-close:hover {
-	 color: black;
-}
-/* Demo Styles */
 
 
- a {
-	 color: inherit;
+@media (min-width: 768px) {
+  .col-md {
+    flex: 1 0 0%;
+  }
+  .row-cols-md-auto > * {
+    flex: 0 0 auto;
+    width: auto;
+  }
+  .row-cols-md-1 > * {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+  .row-cols-md-2 > * {
+    flex: 0 0 auto;
+    width: 50%;
+  }
+  .row-cols-md-3 > * {
+    flex: 0 0 auto;
+    width: 33.333333%;
+  }
+  .row-cols-md-4 > * {
+    flex: 0 0 auto;
+    width: 25%;
+  }
+  .row-cols-md-5 > * {
+    flex: 0 0 auto;
+    width: 20%;
+  }
+  .row-cols-md-6 > * {
+    flex: 0 0 auto;
+    width: 16.666667%;
+  }
+  .col-md-auto {
+    flex: 0 0 auto;
+    width: auto;
+  }
+  .col-md-1 {
+    flex: 0 0 auto;
+    width: 8.333333%;
+  }
+  .col-md-2 {
+    flex: 0 0 auto;
+    width: 16.666667%;
+  }
+  .col-md-3 {
+    flex: 0 0 auto;
+    width: 25%;
+  }
+  .col-md-4 {
+    flex: 0 0 auto;
+    width: 33.333333%;
+  }
+  .col-md-5 {
+    flex: 0 0 auto;
+    width: 41.666667%;
+  }
+  .col-md-6 {
+    flex: 0 0 auto;
+    width: 50%;
+  }
+  .col-md-7 {
+    flex: 0 0 auto;
+    width: 58.333333%;
+  }
+  .col-md-8 {
+    flex: 0 0 auto;
+    width: 66.666667%;
+  }
+  .col-md-9 {
+    flex: 0 0 auto;
+    width: 75%;
+  }
+  .col-md-10 {
+    flex: 0 0 auto;
+    width: 83.333333%;
+  }
+  .col-md-11 {
+    flex: 0 0 auto;
+    width: 91.666667%;
+  }
+  .col-md-12 {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+  .offset-md-0 {
+    margin-left: 0;
+  }
+  .offset-md-1 {
+    margin-left: 8.333333%;
+  }
+  .offset-md-2 {
+    margin-left: 16.666667%;
+  }
+  .offset-md-3 {
+    margin-left: 25%;
+  }
+  .offset-md-4 {
+    margin-left: 33.333333%;
+  }
+  .offset-md-5 {
+    margin-left: 41.666667%;
+  }
+  .offset-md-6 {
+    margin-left: 50%;
+  }
+  .offset-md-7 {
+    margin-left: 58.333333%;
+  }
+  .offset-md-8 {
+    margin-left: 66.666667%;
+  }
+  .offset-md-9 {
+    margin-left: 75%;
+  }
+  .offset-md-10 {
+    margin-left: 83.333333%;
+  }
+  .offset-md-11 {
+    margin-left: 91.666667%;
+  }
+  .g-md-0,
+  .gx-md-0 {
+    --bs-gutter-x: 0;
+  }
+  .g-md-0,
+  .gy-md-0 {
+    --bs-gutter-y: 0;
+  }
+  .g-md-1,
+  .gx-md-1 {
+    --bs-gutter-x: 0.25rem;
+  }
+  .g-md-1,
+  .gy-md-1 {
+    --bs-gutter-y: 0.25rem;
+  }
+  .g-md-2,
+  .gx-md-2 {
+    --bs-gutter-x: 0.5rem;
+  }
+  .g-md-2,
+  .gy-md-2 {
+    --bs-gutter-y: 0.5rem;
+  }
+  .g-md-3,
+  .gx-md-3 {
+    --bs-gutter-x: 1rem;
+  }
+  .g-md-3,
+  .gy-md-3 {
+    --bs-gutter-y: 1rem;
+  }
+  .g-md-4,
+  .gx-md-4 {
+    --bs-gutter-x: 1.5rem;
+  }
+  .g-md-4,
+  .gy-md-4 {
+    --bs-gutter-y: 1.5rem;
+  }
+  .g-md-5,
+  .gx-md-5 {
+    --bs-gutter-x: 3rem;
+  }
+  .g-md-5,
+  .gy-md-5 {
+    --bs-gutter-y: 3rem;
+  }
 }
- .ue-container {
-	 display: grid;
-	 justify-content: center;
-	 align-items: center;
+
+@media (min-width: 992px) {
+
+  .col-lg {
+    flex: 1 0 0%;
+  }
+  .row-cols-lg-auto > * {
+    flex: 0 0 auto;
+    width: auto;
+  }
+  .row-cols-lg-1 > * {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+  .row-cols-lg-2 > * {
+    flex: 0 0 auto;
+    width: 50%;
+  }
+  .row-cols-lg-3 > * {
+    flex: 0 0 auto;
+    width: 33.333333%;
+  }
+  .row-cols-lg-4 > * {
+    flex: 0 0 auto;
+    width: 25%;
+  }
+  .row-cols-lg-5 > * {
+    flex: 0 0 auto;
+    width: 20%;
+  }
+  .row-cols-lg-6 > * {
+    flex: 0 0 auto;
+    width: 16.666667%;
+  }
+  .col-lg-auto {
+    flex: 0 0 auto;
+    width: auto;
+  }
+  .col-lg-1 {
+    flex: 0 0 auto;
+    width: 8.333333%;
+  }
+  .col-lg-2 {
+    flex: 0 0 auto;
+    width: 16.666667%;
+  }
+  .col-lg-3 {
+    flex: 0 0 auto;
+    width: 25%;
+  }
+  .col-lg-4 {
+    flex: 0 0 auto;
+    width: 33.333333%;
+  }
+  .col-lg-5 {
+    flex: 0 0 auto;
+    width: 41.666667%;
+  }
+  .col-lg-6 {
+    flex: 0 0 auto;
+    width: 50%;
+  }
+  .col-lg-7 {
+    flex: 0 0 auto;
+    width: 58.333333%;
+  }
+  .col-lg-8 {
+    flex: 0 0 auto;
+    width: 66.666667%;
+  }
+  .col-lg-9 {
+    flex: 0 0 auto;
+    width: 75%;
+  }
+  .col-lg-10 {
+    flex: 0 0 auto;
+    width: 83.333333%;
+  }
+  .col-lg-11 {
+    flex: 0 0 auto;
+    width: 91.666667%;
+  }
+  .col-lg-12 {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+  .offset-lg-0 {
+    margin-left: 0;
+  }
+  .offset-lg-1 {
+    margin-left: 8.333333%;
+  }
+  .offset-lg-2 {
+    margin-left: 16.666667%;
+  }
+  .offset-lg-3 {
+    margin-left: 25%;
+  }
+  .offset-lg-4 {
+    margin-left: 33.333333%;
+  }
+  .offset-lg-5 {
+    margin-left: 41.666667%;
+  }
+  .offset-lg-6 {
+    margin-left: 50%;
+  }
+  .offset-lg-7 {
+    margin-left: 58.333333%;
+  }
+  .offset-lg-8 {
+    margin-left: 66.666667%;
+  }
+  .offset-lg-9 {
+    margin-left: 75%;
+  }
+  .offset-lg-10 {
+    margin-left: 83.333333%;
+  }
+  .offset-lg-11 {
+    margin-left: 91.666667%;
+  }
+  .g-lg-0,
+  .gx-lg-0 {
+    --bs-gutter-x: 0;
+  }
+  .g-lg-0,
+  .gy-lg-0 {
+    --bs-gutter-y: 0;
+  }
+  .g-lg-1,
+  .gx-lg-1 {
+    --bs-gutter-x: 0.25rem;
+  }
+  .g-lg-1,
+  .gy-lg-1 {
+    --bs-gutter-y: 0.25rem;
+  }
+  .g-lg-2,
+  .gx-lg-2 {
+    --bs-gutter-x: 0.5rem;
+  }
+  .g-lg-2,
+  .gy-lg-2 {
+    --bs-gutter-y: 0.5rem;
+  }
+  .g-lg-3,
+  .gx-lg-3 {
+    --bs-gutter-x: 1rem;
+  }
+  .g-lg-3,
+  .gy-lg-3 {
+    --bs-gutter-y: 1rem;
+  }
+  .g-lg-4,
+  .gx-lg-4 {
+    --bs-gutter-x: 1.5rem;
+  }
+  .g-lg-4,
+  .gy-lg-4 {
+    --bs-gutter-y: 1.5rem;
+  }
+  .g-lg-5,
+  .gx-lg-5 {
+    --bs-gutter-x: 3rem;
+  }
+  .g-lg-5,
+  .gy-lg-5 {
+    --bs-gutter-y: 3rem;
+  }
 }
- .modal-window div:not(:last-of-type) {
-	 margin-bottom: 15px;
+
+@media (min-width: 1200px) {
+  .col-xl {
+    flex: 1 0 0%;
+  }
+  .row-cols-xl-auto > * {
+    flex: 0 0 auto;
+    width: auto;
+  }
+  .row-cols-xl-1 > * {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+  .row-cols-xl-2 > * {
+    flex: 0 0 auto;
+    width: 50%;
+  }
+  .row-cols-xl-3 > * {
+    flex: 0 0 auto;
+    width: 33.333333%;
+  }
+  .row-cols-xl-4 > * {
+    flex: 0 0 auto;
+    width: 25%;
+  }
+  .row-cols-xl-5 > * {
+    flex: 0 0 auto;
+    width: 20%;
+  }
+  .row-cols-xl-6 > * {
+    flex: 0 0 auto;
+    width: 16.666667%;
+  }
+  .col-xl-auto {
+    flex: 0 0 auto;
+    width: auto;
+  }
+  .col-xl-1 {
+    flex: 0 0 auto;
+    width: 8.333333%;
+  }
+  .col-xl-2 {
+    flex: 0 0 auto;
+    width: 16.666667%;
+  }
+  .col-xl-3 {
+    flex: 0 0 auto;
+    width: 25%;
+  }
+  .col-xl-4 {
+    flex: 0 0 auto;
+    width: 33.333333%;
+  }
+  .col-xl-5 {
+    flex: 0 0 auto;
+    width: 41.666667%;
+  }
+  .col-xl-6 {
+    flex: 0 0 auto;
+    width: 50%;
+  }
+  .col-xl-7 {
+    flex: 0 0 auto;
+    width: 58.333333%;
+  }
+  .col-xl-8 {
+    flex: 0 0 auto;
+    width: 66.666667%;
+  }
+  .col-xl-9 {
+    flex: 0 0 auto;
+    width: 75%;
+  }
+  .col-xl-10 {
+    flex: 0 0 auto;
+    width: 83.333333%;
+  }
+  .col-xl-11 {
+    flex: 0 0 auto;
+    width: 91.666667%;
+  }
+  .col-xl-12 {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+  .offset-xl-0 {
+    margin-left: 0;
+  }
+  .offset-xl-1 {
+    margin-left: 8.333333%;
+  }
+  .offset-xl-2 {
+    margin-left: 16.666667%;
+  }
+  .offset-xl-3 {
+    margin-left: 25%;
+  }
+  .offset-xl-4 {
+    margin-left: 33.333333%;
+  }
+  .offset-xl-5 {
+    margin-left: 41.666667%;
+  }
+  .offset-xl-6 {
+    margin-left: 50%;
+  }
+  .offset-xl-7 {
+    margin-left: 58.333333%;
+  }
+  .offset-xl-8 {
+    margin-left: 66.666667%;
+  }
+  .offset-xl-9 {
+    margin-left: 75%;
+  }
+  .offset-xl-10 {
+    margin-left: 83.333333%;
+  }
+  .offset-xl-11 {
+    margin-left: 91.666667%;
+  }
+  .g-xl-0,
+  .gx-xl-0 {
+    --bs-gutter-x: 0;
+  }
+  .g-xl-0,
+  .gy-xl-0 {
+    --bs-gutter-y: 0;
+  }
+  .g-xl-1,
+  .gx-xl-1 {
+    --bs-gutter-x: 0.25rem;
+  }
+  .g-xl-1,
+  .gy-xl-1 {
+    --bs-gutter-y: 0.25rem;
+  }
+  .g-xl-2,
+  .gx-xl-2 {
+    --bs-gutter-x: 0.5rem;
+  }
+  .g-xl-2,
+  .gy-xl-2 {
+    --bs-gutter-y: 0.5rem;
+  }
+  .g-xl-3,
+  .gx-xl-3 {
+    --bs-gutter-x: 1rem;
+  }
+  .g-xl-3,
+  .gy-xl-3 {
+    --bs-gutter-y: 1rem;
+  }
+  .g-xl-4,
+  .gx-xl-4 {
+    --bs-gutter-x: 1.5rem;
+  }
+  .g-xl-4,
+  .gy-xl-4 {
+    --bs-gutter-y: 1.5rem;
+  }
+  .g-xl-5,
+  .gx-xl-5 {
+    --bs-gutter-x: 3rem;
+  }
+  .g-xl-5,
+  .gy-xl-5 {
+    --bs-gutter-y: 3rem;
+  }
 }
- small {
-	 color: #aaa;
+
+@media (min-width: 1400px) {
+  .col-xxl {
+    flex: 1 0 0%;
+  }
+  .row-cols-xxl-auto > * {
+    flex: 0 0 auto;
+    width: auto;
+  }
+  .row-cols-xxl-1 > * {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+  .row-cols-xxl-2 > * {
+    flex: 0 0 auto;
+    width: 50%;
+  }
+  .row-cols-xxl-3 > * {
+    flex: 0 0 auto;
+    width: 33.333333%;
+  }
+  .row-cols-xxl-4 > * {
+    flex: 0 0 auto;
+    width: 25%;
+  }
+  .row-cols-xxl-5 > * {
+    flex: 0 0 auto;
+    width: 20%;
+  }
+  .row-cols-xxl-6 > * {
+    flex: 0 0 auto;
+    width: 16.666667%;
+  }
+  .col-xxl-auto {
+    flex: 0 0 auto;
+    width: auto;
+  }
+  .col-xxl-1 {
+    flex: 0 0 auto;
+    width: 8.333333%;
+  }
+  .col-xxl-2 {
+    flex: 0 0 auto;
+    width: 16.666667%;
+  }
+  .col-xxl-3 {
+    flex: 0 0 auto;
+    width: 25%;
+  }
+  .col-xxl-4 {
+    flex: 0 0 auto;
+    width: 33.333333%;
+  }
+  .col-xxl-5 {
+    flex: 0 0 auto;
+    width: 41.666667%;
+  }
+  .col-xxl-6 {
+    flex: 0 0 auto;
+    width: 50%;
+  }
+  .col-xxl-7 {
+    flex: 0 0 auto;
+    width: 58.333333%;
+  }
+  .col-xxl-8 {
+    flex: 0 0 auto;
+    width: 66.666667%;
+  }
+  .col-xxl-9 {
+    flex: 0 0 auto;
+    width: 75%;
+  }
+  .col-xxl-10 {
+    flex: 0 0 auto;
+    width: 83.333333%;
+  }
+  .col-xxl-11 {
+    flex: 0 0 auto;
+    width: 91.666667%;
+  }
+  .col-xxl-12 {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+  .offset-xxl-0 {
+    margin-left: 0;
+  }
+  .offset-xxl-1 {
+    margin-left: 8.333333%;
+  }
+  .offset-xxl-2 {
+    margin-left: 16.666667%;
+  }
+  .offset-xxl-3 {
+    margin-left: 25%;
+  }
+  .offset-xxl-4 {
+    margin-left: 33.333333%;
+  }
+  .offset-xxl-5 {
+    margin-left: 41.666667%;
+  }
+  .offset-xxl-6 {
+    margin-left: 50%;
+  }
+  .offset-xxl-7 {
+    margin-left: 58.333333%;
+  }
+  .offset-xxl-8 {
+    margin-left: 66.666667%;
+  }
+  .offset-xxl-9 {
+    margin-left: 75%;
+  }
+  .offset-xxl-10 {
+    margin-left: 83.333333%;
+  }
+  .offset-xxl-11 {
+    margin-left: 91.666667%;
+  }
+  .g-xxl-0,
+  .gx-xxl-0 {
+    --bs-gutter-x: 0;
+  }
+  .g-xxl-0,
+  .gy-xxl-0 {
+    --bs-gutter-y: 0;
+  }
+  .g-xxl-1,
+  .gx-xxl-1 {
+    --bs-gutter-x: 0.25rem;
+  }
+  .g-xxl-1,
+  .gy-xxl-1 {
+    --bs-gutter-y: 0.25rem;
+  }
+  .g-xxl-2,
+  .gx-xxl-2 {
+    --bs-gutter-x: 0.5rem;
+  }
+  .g-xxl-2,
+  .gy-xxl-2 {
+    --bs-gutter-y: 0.5rem;
+  }
+  .g-xxl-3,
+  .gx-xxl-3 {
+    --bs-gutter-x: 1rem;
+  }
+  .g-xxl-3,
+  .gy-xxl-3 {
+    --bs-gutter-y: 1rem;
+  }
+  .g-xxl-4,
+  .gx-xxl-4 {
+    --bs-gutter-x: 1.5rem;
+  }
+  .g-xxl-4,
+  .gy-xxl-4 {
+    --bs-gutter-y: 1.5rem;
+  }
+  .g-xxl-5,
+  .gx-xxl-5 {
+    --bs-gutter-x: 3rem;
+  }
+  .g-xxl-5,
+  .gy-xxl-5 {
+    --bs-gutter-y: 3rem;
+  }
 }
- .btn {
-	 background-color: #fff;
-	 padding: 1em 1.5em;
-	 border-radius: 3px;
-	 text-decoration: none;
-}
- .btn i {
-	 padding-right: 0.3em;
+
+@media (max-width: 500px) {
+  .ue-review-images-modal > div {
+    width: 80%;
+  }
 }
 </style>
-          <div id="ue-customer-reviews-title" >
-            <h2 style="margin-bottom: 0px;" >Customer Reviews</h2>
-          </div>
+  <div id="ue-customer-reviews-title" >
+    <h2 style="margin-bottom: 0px;" >Customer Reviews</h2>
+  </div>
 
   <div class="ue-rating">
     <div class="ue-rating-upper" style="width: <%=media*10*2%>%;">
@@ -417,10 +1023,10 @@
     </div>
   </div>
   <br>
-<div id="ue-total-review-description" style="" data-reviews-count="<%= reviews.count %>" data-reviews-median="<%= media %>">
-  <span class="big-median"><%= media %></span> <span> Based on <%= reviews.count %> reviews</span>
-</div>
-<br>
+  <div id="ue-total-review-description" style="" data-reviews-count="<%= reviews.count %>" data-reviews-median="<%= media %>">
+    <span class="big-median"><%= media %></span> <span> Based on <%= reviews.count %> reviews</span>
+  </div>
+  <br>
 </div>
 
 
@@ -457,39 +1063,14 @@
     </div>
   </div>
 <% end %>
+
 <div id='reviews-pagination'>
-  <%= will_paginate @reviews , params: {daterange: @daterange} %>
+  <%= will_paginate @reviews %>
 </div>
 
-
-
-<div class="ue-container">
-  <div class="interior">
-    <a class="btn" id="open-modal-btn" href="#open-modal">👋 Basic CSS-Only Modal</a>
-  </div>
-</div>
-  <%# <div id="open-modal" class="modal-window">
-  <div>
-    <a href="#" title="Close" class="modal-close">Close</a>
-    <h1>Voilà!</h1>
-    <div>A CSS-only modal based on the :target pseudo-class. Hope you find it helpful.</div>
-    <div><small>Check out</small></div>
-    <a href="https://aminoeditor.com" target="_blank">👉 Amino: Live CSS Editor for Chrome</div>
-    </div>
-</div> %>
-
-
-
-
-    <%# <div class="background-content">
-        lengthy content here
-    </div> %>
             
 <script>
-$('body').on('click', '#open-modal-btn',function(){
-  $('.modal-window').addClass('visible');
-})
-$('body').on('click', 'a.modal-close',function(){
-  $('.modal-window').removeClass('visible');
-})
+  $('body').on('click', 'a.modal-close',function(){
+    $('.ue-review-images-modal').removeClass('visible');
+  })
 </script>
