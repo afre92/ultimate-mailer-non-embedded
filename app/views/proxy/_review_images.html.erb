@@ -3,7 +3,7 @@
     <% @review.images.each_with_index do |image, index|%>
       <!-- Full-width images with number and caption text -->
 
-      <div class="mySlides fade">
+      <div class="mySlides fade col-md-12 col-sm-12">
         <div class="numbertext"><%= index+1 %> / <%= @review.images.count %></div>
         <%= image_tag_remote(image) %>
       </div>
@@ -13,12 +13,14 @@
     <a class="next" onclick="plusSlides(1)">&#10095;</a>
   </div>
   <div class="col-md-4 col-sm-12">
-    <div class="close ue-trigger"></div>
     <div class="modal-review-content" style="padding: 20px;">
-      <div class="row">
-      
-        <b style="font-size: larger;"><%= @review.customer_name_abbreviated %></b>
-        <b style="color: #1cc286; font-size: larger;">  Verified Buyer </b>
+      <div class="">
+        <div class="col-sm-12 mb-0">
+          <b style="font-size: larger;"><%= @review.customer_name_abbreviated %></b>
+        </div>
+        <div class="col-sm-12">
+          <b style="color: #1cc286; font-size: larger;">  Verified Buyer </b>
+        </div>
       </div>
       <div style="padding-bottom: 10px; display: flex; justify-content: space-between;">
         <div>
