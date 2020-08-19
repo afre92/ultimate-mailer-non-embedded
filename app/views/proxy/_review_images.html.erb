@@ -1,35 +1,32 @@
 <div class="slideshow-container row col-md-12">
   <div class="col-md-8 col-sm-12">
     <% @review.images.each_with_index do |image, index|%>
-      <!-- Full-width images with number and caption text -->
-
       <div class="mySlides fade col-md-12 col-sm-12">
-        <div class="numbertext"><%= index+1 %> / <%= @review.images.count %></div>
-        <%= image_tag_remote(image) %>
+        <div class="col-md-12 modal-image">
+          <%= image_tag_remote(image) %>
+        </div>
       </div>
     <% end %>
-    <!-- Next and previous buttons -->
     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
     <a class="next" onclick="plusSlides(1)">&#10095;</a>
   </div>
   <div class="col-md-4 col-sm-12">
-    <div class="modal-review-content" style="padding: 20px;">
-      <div class="">
+    <div class="modal-review-content">
+      <div>
         <div class="col-sm-12 mb-0">
           <b style="font-size: larger;"><%= @review.customer_name_abbreviated %></b>
         </div>
         <div class="col-sm-12">
-          <b style="color: #1cc286; font-size: larger;">  Verified Buyer </b>
+          <b class="verified-buyer">  Verified Buyer </b>
         </div>
       </div>
-      <div style="padding-bottom: 10px; display: flex; justify-content: space-between;">
+      <div class="modal-rating-and-updated-at">
         <div>
           <%= @review.rating_stars %>
         </div> 
         <div style="font-size: smaller; color: grey;">
           <%= time_ago_in_words(@review.updated_at) %> ago
         </div>
-
       </div>
       <div style="padding-bottom: 10px;">
          <b><%= @review.title.upcase %> </b>
@@ -41,8 +38,6 @@
   </div>
 </div>
 <br>
-
-<!-- The dots/circles -->
 
 <div style="text-align:center">
   <% @review.images.each_with_index do |image, index|%>
