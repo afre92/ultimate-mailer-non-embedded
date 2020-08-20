@@ -1,7 +1,12 @@
 <%= render partial: 'styles' %>
 
-<div id="ue-customer-reviews-title" >
-  <h2 style="margin-bottom: 0px;" >Customer Reviews</h2>
+<div style="display: flex; justify-content: space-between;">
+  <div id="ue-customer-reviews-title" >
+    <h2 style="margin-bottom: 0px;" >Customer Reviews</h2>
+  </div>
+  <div>
+    <button> Write a Review</div>
+  </div>
 </div>
 
 <div class="ue-rating">
@@ -26,6 +31,11 @@
   <span class="big-median"><%= media %></span> <span> Based on <%= reviews.count %> reviews</span>
 </div>
 <br>
+
+
+<div id="ue-review-form-container">
+  <%= render partial: 'review_form' %>
+</div>
 
 <% reviews.each do |review| %>
   <div class="ue-review">
