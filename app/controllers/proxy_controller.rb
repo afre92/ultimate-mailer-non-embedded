@@ -5,9 +5,6 @@ class ProxyController < ActionController::Base
   before_action :verify_signature, only: :router
 
   def reviews
-    # find id of the product
-     # its going to be an id on a div
-    # get all reviews for product
     @reviews = @shop.reviews.where(shopify_product_id: params[:id]).paginate(page: params[:page], per_page: 10)
     total = 0
     @reviews.each do |review|
@@ -22,6 +19,10 @@ class ProxyController < ActionController::Base
     # find review and get all amages
     @review = @shop.reviews.find(params[:review_id])
     render :partial => 'review_images'
+  end
+
+  def create_review_from_form
+    Review.parse_data_and_create_review(params[:review])
   end
 
   def router

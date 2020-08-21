@@ -39,8 +39,18 @@ class Review < ApplicationRecord
     else
       return "#{first}"
     end
-    
   end
 
+  def self.parse_data_and_create_review(params)
+    obj = {}
+    shop = Shop.find_by(name: params[:shop])
+    params.each { |key, value| obj[value["name"]] = value["value"] }
 
+    order = shop.orders.create(email: obj["customer_email"], customer: {id: 000, email: obj["customer_email"]})
+    order_item = order.order_items.create(shopify_product_id: params["product_id"])
+    review = order_item.review.create(rating: obj["rating"], title: obj["title"], description: obj["description"], review_status: "completed", customer_name: obj["customer_name"], shopify_product_id: obj["product_id"], order_item_id: order_item.id)
+    # create order with email, customer:jsonb, order_number:00000, 
+    # order.create(email)
+    byebug
+  end
 end

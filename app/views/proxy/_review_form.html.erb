@@ -1,38 +1,38 @@
 
 <fieldset>
 
-  <form action="/a/s">
+  <form action="/a/s" id="review-form" data-remote="true">
 
     <div id="ue-review-form-body">
+      <input name="method" type="hidden" value="create_review_from_form"><br>
       <div style="display:flex; justify-content: space-between;">
         <div class="col-md-6 col-sm-12 pr-10" >
           <label >Name</label>
-          <input class="col-md-12" id="description" name="review[customer_name]" ><br>
+          <input class="col-md-12" id="description" name="customer_name" ><br>
         </div>
 
         <div class="col-md-6 col-sm-12 pl-10" >
           <label>Email</label>
-          <input  class="col-md-12" id="email" name="review[customer_email]"><br>
+          <input  class="col-md-12" id="email" name="customer_email"><br>
         </div>
       </div>
       <br>
 
       <div>
         <label >Title of Review</label>
-        <input class="col-md-12" id="title" name="review[title]"><br>
+        <input class="col-md-12" id="title" name="title"><br>
       </div>
       <br>
 
       <div>
         <label >How was your overall experience</label>
-        <textarea class="col-md-12" id="title" name="review[description]"> </textarea><br>
+        <textarea class="col-md-12" id="title" name="description"> </textarea><br>
       </div>
       <br>
 
     </div>
-
-    <div style="text-align: right">
-      <button type="submit" >Submit Review</button>
-    </div>
   </form>
+      <div style="text-align: right">
+      <button type="submit" id="submit-review-form" >Submit Review</button>
+    </div>
 </fieldset>
