@@ -5,7 +5,7 @@
     <h2 style="margin-bottom: 0px;" >Customer Reviews</h2>
   </div>
   <div>
-    <button> Write a Review</div>
+    <button id="ue-open-review-form-modal"> Write a Review</button>
   </div>
 </div>
 
@@ -36,6 +36,7 @@
 <div id="ue-review-form-container">
   <%= render partial: 'review_form' %>
 </div>
+
 
 <% reviews.each do |review| %>
   <div class="ue-review">

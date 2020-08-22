@@ -22,7 +22,7 @@ class ProxyController < ActionController::Base
   end
 
   def create_review_from_form
-    Review.parse_data_and_create_review(params[:review])
+    Review.parse_data_and_create_review(params)
   end
 
   def router
