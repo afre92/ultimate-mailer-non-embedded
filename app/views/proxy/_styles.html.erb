@@ -9,8 +9,9 @@
 }
 .rate:not(:checked) > input {
   
-    position:fixed;
-    top:-9999px;
+    /* position:absolute;
+    top:-9999px; */
+    display: none;
 }
 .rate:not(:checked) > label {
     width:1em;
@@ -28,14 +29,14 @@
 }
 .rate:not(:checked) > label:hover,
 .rate:not(:checked) > label:hover ~ label {
-    color: #deb217;  
+    color: #ffc700;   
 }
 .rate > input:checked + label:hover,
 .rate > input:checked + label:hover ~ label,
 .rate > input:checked ~ label:hover,
 .rate > input:checked ~ label:hover ~ label,
 .rate > label:hover ~ input:checked ~ label {
-    color: #c59b08;
+    color: #ffc700;
 }
 
 /* review submitted container styles */

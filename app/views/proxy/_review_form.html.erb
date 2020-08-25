@@ -8,12 +8,12 @@
       <div style="display:flex; justify-content: space-between;">
         <div class="col-md-6 col-sm-12 pr-10" >
           <label >Name</label>
-          <input class="col-md-12" id="description" name="customer_name" ><br>
+          <input class="col-md-12" id="description" name="customer_name" required><br>
         </div>
 
         <div class="col-md-6 col-sm-12 pl-10" >
           <label>Email</label>
-          <input  class="col-md-12" id="email" name="customer_email"><br>
+          <input  class="col-md-12" id="email" name="customer_email" type="email" required><br>
         </div>
       </div>
       
@@ -21,7 +21,6 @@
       <div class="col-md-12">
         <label>Rating</label>
           <div class="rate col-md-12">
-
             <input type="radio" id="star1" name="rate" value="1" />
             <label for="star1" title="text">1 star</label>
             <input type="radio" id="star2" name="rate" value="2" />
@@ -32,29 +31,27 @@
             <label for="star4" title="text">4 stars</label>
             <input type="radio" id="star5" name="rate" value="5" />
             <label for="star5" title="text">5 stars</label>
-
-
-
-    
           </div>
       </div>
 
 
       <div>
         <label >Title of Review</label>
-        <input class="col-md-12" id="title" name="title"><br>
+        <input class="col-md-12" id="title" name="title" required><br>
       </div>
       <br>
 
       <div>
         <label >How was your overall experience</label>
-        <textarea class="col-md-12" id="title" name="description"> </textarea><br>
+        <textarea class="col-md-12" id="title" name="description" required> </textarea><br>
       </div>
       <br>
 
     </div>
-  </form>
-      <div style="text-align: right">
-      <button type="submit" id="submit-review-form" >Submit Review</button>
+
+    <div style="text-align: right">
+      <button type="submit" id="submit-review-forn" >Submit Review</button>
     </div>
+  </form>
+
 </fieldset>
