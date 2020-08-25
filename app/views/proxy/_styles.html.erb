@@ -8,9 +8,6 @@
     justify-content: flex-end;
 }
 .rate:not(:checked) > input {
-  
-    /* position:absolute;
-    top:-9999px; */
     display: none;
 }
 .rate:not(:checked) > label {
@@ -25,18 +22,18 @@
     content: '★ ';
 }
 .rate > input:checked ~ label {
-    color: #ffc700;    
+    color: <%= @shop.star_color %>;    
 }
 .rate:not(:checked) > label:hover,
 .rate:not(:checked) > label:hover ~ label {
-    color: #ffc700;   
+    color: <%= @shop.star_color %>;   
 }
 .rate > input:checked + label:hover,
 .rate > input:checked + label:hover ~ label,
 .rate > input:checked ~ label:hover,
 .rate > input:checked ~ label:hover ~ label,
 .rate > label:hover ~ input:checked ~ label {
-    color: #ffc700;
+    color: <%= @shop.star_color %>;
 }
 
 /* review submitted container styles */
@@ -1295,5 +1292,22 @@
 div.modal-image{
   display: flex;
   justify-content: center;
+}
+
+
+.ue-btn {
+  background: transparent;
+  padding: 10px;
+  color: #8c8c8c;
+  cursor: pointer;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: smaller;
+  border: 1px solid #b3b3b3;
+  text-decoration: none;
+}
+
+.ur-btn:hover {
+  border: 1px solid #b3b3b3;
 }
 </style>
