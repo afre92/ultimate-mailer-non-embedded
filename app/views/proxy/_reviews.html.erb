@@ -75,8 +75,8 @@
   </div>
 <% end %>
 
-<div id='reviews-pagination'>
-  <%= will_paginate @reviews %>
+<div id='reviews-pagination' class="text-center">
+  <%= will_paginate @reviews, class: 'ue-pagination', previous_label: '< Previous', next_label: 'Next >' %>
 </div>
        
 <script>
