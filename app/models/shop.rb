@@ -22,10 +22,7 @@ class Shop < ApplicationRecord
     reviews.each do |review|
       total += review.rating.to_i
     end
-    
     rating = (total/reviews.count).round(1)
-
-    # byebug
   end
 
   def create_discount_code
