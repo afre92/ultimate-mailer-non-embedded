@@ -15,6 +15,19 @@ class Shop < ApplicationRecord
     end
   end
 
+
+  def calculate_rating(shopify_product_id)
+    reviews = self.reviews.where(review_status: 'completed', shopify_product_id: shopify_product_id)
+    total = 0
+    reviews.each do |review|
+      total += review.rating.to_i
+    end
+    
+    rating = (total/reviews.count).round(1)
+
+    # byebug
+  end
+
   def create_discount_code
     discount_code = ShopifyAPI::DiscountCode.new(code: DiscountCode.create_unique_code)
     discount_code.prefix_options[:price_rule_id] = self.price_rule.shopify_id.to_i

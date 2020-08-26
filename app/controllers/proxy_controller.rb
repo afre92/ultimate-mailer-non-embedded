@@ -6,15 +6,11 @@ class ProxyController < ActionController::Base
 
   def reviews
     @reviews = @shop.reviews.where(shopify_product_id: params[:id]).paginate(page: params[:page], per_page: 1)
-
+    @rating = @shop.calculate_rating(params[:id])
     #TOdo: add different action to calculate reviews average
-    total = 0
-    @reviews.each do |review|
-      total += review.rating
-    end
-    media = (total/@reviews.count).round(1)
 
-    render :partial => 'reviews' , locals: {reviews: @reviews, media: media}
+
+    render :partial => 'reviews' , locals: {reviews: @reviews, media: @rating}
   end
 
   def review_images
