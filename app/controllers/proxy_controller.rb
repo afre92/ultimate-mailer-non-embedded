@@ -5,10 +5,8 @@ class ProxyController < ActionController::Base
   before_action :verify_signature, only: :router
 
   def reviews
-    @reviews = @shop.reviews.where(review_status: 'completed', shopify_product_id: params[:id]).paginate(page: params[:page], per_page: 10)
+    @reviews = @shop.reviews.where(review_status: 'completed', shopify_product_id: params[:id]).order("submitted_on DESC").paginate(page: params[:page], per_page: 10)
     @rating = @shop.calculate_rating(params[:id])
-    #TOdo: add different action to calculate reviews average
-
 
     render :partial => 'reviews' , locals: {reviews: @reviews, media: @rating}
   end

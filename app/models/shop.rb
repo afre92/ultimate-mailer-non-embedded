@@ -34,5 +34,11 @@ class Shop < ApplicationRecord
     return discount_code
   end
 
+  def create_order_review_form(params)
+    first_name, last_name = params["customer_name"].split(" ").length > 1 ? params["customer_name"].split(" ") : [params["customer_name"], ""]
+    customer = { id: "0000", email: params["customer_email"], default_address: {}, first_name: first_name, last_name: last_name}.to_json
+    return self.orders.create(email: params["customer_email"], order_number: "0000" , customer: customer)
+  end
+
 
 end
