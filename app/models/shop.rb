@@ -22,6 +22,7 @@ class Shop < ApplicationRecord
     reviews.each do |review|
       total += review.rating.to_i
     end
+    return 0 if (total == 0 || reviews.count == 0)
     rating = (total/reviews.count).round(1)
   end
 
