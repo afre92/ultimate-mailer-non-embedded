@@ -1,5 +1,13 @@
 <%= render partial: 'styles' %>
+      
+    <div class="product-page-reviews-section">
 
+        <div id="shopify-product-reviews" data-id="{{product.id}}" data-title="{{product.title}}" style="max-width: 1134px; margin-left:auto; margin-right: auto;">
+       
+          
+          <div id='reviews-list' class="page-width">
+
+          
 <div style="display: flex; justify-content: space-between;">
   <div id="ue-customer-reviews-title" >
     <h2 style="margin-bottom: 0px;" >Customer Reviews</h2>
@@ -78,9 +86,9 @@
 <div id='reviews-pagination' class="text-center">
   <%= will_paginate @reviews, class: 'ue-pagination', previous_label: '< Previous', next_label: 'Next >' %>
 </div>
-       
-<script>
-  // $('body').on('click', 'div.close.ue-trigger',function(){
-  //   $('.ue-review-images-modal').removeClass('visible');
-  // })
-</script>
+
+            
+            
+          </div>
+        </div>
+    </div>

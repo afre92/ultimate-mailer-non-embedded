@@ -7,28 +7,31 @@ $('body').on('click','.ue-trigger',function() {
   return false;
 });
 
-if ($("#shopify-product-reviews").length > 0) {
-  loadReviews();
-  paginationHandler();
-};
 
-function loadReviews() {
-  var shopifyId = $("#shopify-product-reviews").data('id');
-  getReviews({ id: shopifyId, method: 'reviews' });
+function getProductInfo(){
+  var product = $('#ProductJson-product-template').text();
+  return product = JSON.parse(product)
 }
 
-function paginationHandler(){
+if ($('#ProductJson-product-template').length > 0) {
+  
+  var product = getProductInfo()
+  loadReviews(product);
+  paginationHandler(product);
+};
+
+function loadReviews(product) {
+  getReviews({ id: product.id, method: 'reviews' });
+}
+
+function paginationHandler(product){
   $('body').on('click', '.ue-pagination > a',function(e){
     e.preventDefault();
     var searchParams = new URLSearchParams($(this).attr('href'))
-    var shopifyId = $("#shopify-product-reviews").data('id');
-    getReviews({ id: shopifyId, page: searchParams.get('page'), method: 'reviews' })
+    getReviews({ id: product.id, page: searchParams.get('page'), method: 'reviews' })
   });
 }
 
-function loadReviewImages(id) {
-  var shopifyId = $("#shopify-product-reviews").data('id');
-}
 
 function addRatingsBellowPrice(){
   var median = $('#ue-total-review-description').data('reviews-median')
@@ -98,10 +101,12 @@ $('body').on('submit', 'form#review-form',function(e){
 })
 
 function getReviews(params){
+  debugger
   $.get( `${window.location.origin}/a/s`, params)
   .done(function(data){
-    $('#reviews-list').html(data)
-    addRatingsBellowPrice();
+    debugger
+    $('div.product-template__container').after(data)
+    // addRatingsBellowPrice();
   })
   .fail(function(){
     console.log("something failed")
