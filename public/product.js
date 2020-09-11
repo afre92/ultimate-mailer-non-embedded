@@ -80,10 +80,8 @@ $('body').on('click', '.review-photo',function(e){
 
 $('body').on('submit', 'form#review-form',function(e){
   e.preventDefault();
-  var shopifyId = $("#shopify-product-reviews").data('id');
-  // debugger
-  
-  $.get( `${window.location.origin}/a/s`, {product_title: $("#shopify-product-reviews").data('title'), review: $('form#review-form').serializeArray(),product_id: shopifyId, method: "create_review_from_form"})
+  var product = getProductInfo()
+  $.get( `${window.location.origin}/a/s`, {product_title: product.title, review: $('form#review-form').serializeArray(),product_id: product.id, method: "create_review_from_form"})
   .done(function(data){
 
 
@@ -101,10 +99,8 @@ $('body').on('submit', 'form#review-form',function(e){
 })
 
 function getReviews(params){
-  debugger
   $.get( `${window.location.origin}/a/s`, params)
   .done(function(data){
-    debugger
     $('div.product-template__container').after(data)
     // addRatingsBellowPrice();
   })
