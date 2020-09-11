@@ -34,6 +34,7 @@ function paginationHandler(product){
 
 
 function addRatingsBellowPrice(){
+  // TODO: move this to a template
   var median = $('#ue-total-review-description').data('reviews-median')
   var reviewsCount = $('#ue-total-review-description').data('reviews-count')
   var template = `<div class="ue-small-rating">
@@ -101,8 +102,13 @@ $('body').on('submit', 'form#review-form',function(e){
 function getReviews(params){
   $.get( `${window.location.origin}/a/s`, params)
   .done(function(data){
+
+    if ($('.ue-product-page-reviews-section').length > 0) {
+      $('.ue-product-page-reviews-section').remove();
+    } 
     $('div.product-template__container').after(data)
-    // addRatingsBellowPrice();
+
+    addRatingsBellowPrice();
   })
   .fail(function(){
     console.log("something failed")
