@@ -59,11 +59,13 @@ function addRatingsBellowPrice(){
 
 $('body').on('click', '.review-photo',function(e){
   var reviewId = $(this).parent('div.review-images-wrapper').data('review-id');
+  
   $.get( `${window.location.origin}/a/s`, {review_id: reviewId, method: 'review_images'})
   .done(function(data){
     //TODO: change path to not
-    $('.ue-review-images-modal').addClass('visible');
-    $('.ue-modal-content').html(data)
+    debugger
+    // $('.ue-review-images-modal').addClass('visible');
+    $('body').after(data)
   
     var slideIndex = 0;
     showSlides(slideIndex);

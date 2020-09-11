@@ -23,7 +23,7 @@ class Shop < ApplicationRecord
       total += review.rating.to_i
     end
     return 0 if (total == 0 || reviews.count == 0)
-    rating = (total/reviews.count).round(1)
+    rating = (total.to_f/reviews.count).round(1)
   end
 
   def create_discount_code
