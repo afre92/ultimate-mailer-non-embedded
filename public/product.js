@@ -63,9 +63,8 @@ $('body').on('click', '.review-photo',function(e){
   $.get( `${window.location.origin}/a/s`, {review_id: reviewId, method: 'review_images'})
   .done(function(data){
     //TODO: change path to not
-    debugger
     // $('.ue-review-images-modal').addClass('visible');
-    $('body').after(data)
+    $('body').append(data)
   
     var slideIndex = 0;
     showSlides(slideIndex);
