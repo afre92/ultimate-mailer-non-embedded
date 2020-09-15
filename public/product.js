@@ -1,10 +1,8 @@
 
 // make sure this only loads on products page
 // Modal initializer
-$('body').on('click','.ue-trigger',function() {
-  $('.ue-modal-wrapper').toggleClass('open');
-  $('.ue-page-wrapper').toggleClass('ue-blur');
-  return false;
+$('body').on('click','.ue-close-modal',function() {
+  $('.ue-review-images-modal.visible').remove()
 });
 
 
