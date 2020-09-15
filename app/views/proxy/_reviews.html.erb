@@ -1,95 +1,84 @@
 <div class="ue-product-page-reviews-section">
-<%= render partial: 'styles' %>
-      
-    
-
-        <div id="shopify-product-reviews" data-id="{{product.id}}" data-title="{{product.title}}" style="max-width: 1134px; margin-left:auto; margin-right: auto;">
-       
-          
-          <div id='reviews-list' class="page-width">
-
-
-<div style="display: flex; justify-content: space-between;">
-  <div id="ue-customer-reviews-title" >
-    <h2 style="margin-bottom: 0px;" >Customer Reviews</h2>
-  </div>
-  <div>
-    <button id="ue-open-review-form-modal" class="ue-btn"> Write a Review</button>
-  </div>
-</div>
-
-<div class="ue-rating">
-  <div class="ue-rating-upper" style="width: <%=media*10*2%>%;">
-      <span>★</span>
-      <span>★</span>
-      <span>★</span>
-      <span>★</span>
-      <span>★</span>
-  </div>
-  <div class="ue-rating-lower">
-      <span>★</span>
-      <span>★</span>
-      <span>★</span>
-      <span>★</span>
-      <span>★</span>
-  </div>
-</div>
-
-<br>
-<div id="ue-total-review-description" style="" data-reviews-count="<%= reviews.count %>" data-reviews-median="<%= media %>">
-  <span class="big-median"><%= media %></span> <span> Based on <%= reviews.count %> reviews</span>
-</div>
-<br>
-
-
-<div id="ue-review-form-container">
-  <%= render partial: 'review_form' %>
-</div>
-
-
-<% reviews.each do |review| %>
-  <div class="ue-review">
-    <div class="ue-review-content">
-      <div style="display: flex; justify-content: space-between; width: 100%;">
-        <div class="col-md-10">
-          <%= review.rating_stars(@shop.star_color) %>
-        </div>
-        <div class="col-md-2 text-right">
-          <%= review.updated_at.strftime('%D') %>
-        </div>
-      </div>
-      <div style="padding-top:10px; padding-bottom: 10px;">
-        <div>
-          <b><%= review.title.upcase %> </b>
+  <%= render partial: 'styles' %>
+  <div id="shopify-product-reviews" data-id="{{product.id}}" data-title="{{product.title}}" style="max-width: 1134px; margin-left:auto; margin-right: auto;">
+    <div id='reviews-list' class="page-width">
+      <div style="display: flex; justify-content: space-between;">
+        <div id="ue-customer-reviews-title" >
+          <h2 style="margin-bottom: 0px;" >Customer Reviews</h2>
         </div>
         <div>
-          <%= review.customer_name_abbreviated %>
+          <button id="ue-open-review-form-modal" class="ue-btn"> Write a Review</button>
         </div>
       </div>
-      <div>
-        <%= review.description %>
-      </div>
-      <div>
-        <div class="review-images-wrapper" data-review-id="<%= review.id %>">
-          <% if review.images %>
-            <br>
-            <br>
-            <% review.images.each do |image| %>
-              <%= image_tag_remote(image.variant(resize: '100x100')) %>
-            <% end %>
-          <% end %>
+
+      <div class="ue-rating">
+        <div class="ue-rating-upper" style="width: <%=media*10*2%>%;">
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+        </div>
+        <div class="ue-rating-lower">
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
         </div>
       </div>
-    </div>
-  </div>
-<% end %>
 
-<div id='reviews-pagination' class="text-center">
-  <%= will_paginate @reviews, class: 'ue-pagination', previous_label: '< Previous', next_label: 'Next >' %>
-</div>
+      <br>
+      <div id="ue-total-review-description" style="" data-reviews-count="<%= reviews.count %>" data-reviews-median="<%= media %>">
+        <span class="big-median"><%= media %></span> <span> Based on <%= reviews.count %> reviews</span>
+      </div>
+      <br>
 
-            
-            
+      <div id="ue-review-form-container">
+        <%= render partial: 'review_form' %>
+      </div>
+
+      <% reviews.each do |review| %>
+        <div class="ue-review">
+          <div class="ue-review-content">
+            <div style="display: flex; justify-content: space-between; width: 100%;">
+              <div class="col-md-10">
+                <%= review.rating_stars(@shop.star_color) %>
+              </div>
+              <div class="col-md-2 text-right">
+                <%= review.updated_at.strftime('%D') %>
+              </div>
+            </div>
+            <div style="padding-top:10px; padding-bottom: 10px;">
+              <div>
+                <b><%= review.title.upcase %> </b>
+              </div>
+              <div>
+                <%= review.customer_name_abbreviated %>
+              </div>
+            </div>
+            <div>
+              <%= review.description %>
+            </div>
+            <div>
+              <div class="review-images-wrapper" data-review-id="<%= review.id %>">
+                <% if review.images %>
+                  <br>
+                  <br>
+                  <% review.images.each do |image| %>
+                    <%= image_tag_remote(image.variant(resize: '100x100')) %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
           </div>
         </div>
+      <% end %>
+
+      <div id='reviews-pagination' class="text-center">
+        <%= will_paginate @reviews, class: 'ue-pagination', previous_label: '< Previous', next_label: 'Next >' %>
+      </div>
+        
     </div>
+  </div>
+</div>

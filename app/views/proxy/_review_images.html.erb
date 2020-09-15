@@ -1,57 +1,54 @@
-  <div class="ue-review-images-modal visible">
-    <div>
-      <div class="ue-close-modal"></div>
-      <div class="ue-modal-content"></div>
+<div class="ue-review-images-modal">
+  <div>
+    <div class="ue-close-modal"></div>
+    <div class="ue-modal-content">
+      <div class="slideshow-container row col-md-12">
+        <div class="col-md-8 col-sm-12">
+          <% @review.images.each_with_index do |image, index|%>
+            <div class="mySlides fade col-md-12 col-sm-12">
+              <div class="col-md-12 modal-image">
+                <%= image_tag_remote(image) %>
+              </div>
+            </div>
+          <% end %>
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <div class="col-md-4 col-sm-12">
+          <div class="modal-review-content">
+            <div>
+              <div class="col-sm-12 mb-0">
+                <b style="font-size: larger;"><%= @review.customer_name_abbreviated %></b>
+              </div>
+              <div class="col-sm-12">
+                <b class="verified-buyer">  Verified Buyer </b>
+              </div>
+            </div>
+            <div class="modal-rating-and-updated-at">
+              <div>
+                <%= @review.rating_stars %>
+              </div> 
+              <div style="font-size: smaller; color: grey;">
+                <%= time_ago_in_words(@review.updated_at) %> ago
+              </div>
+            </div>
+            <div style="padding-bottom: 10px;">
+              <b><%= @review.title.upcase %> </b>
+            </div>
+            <div>
+              <%= @review.description %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
 
+      <div style="text-align:center">
+        <% @review.images.each_with_index do |image, index|%>
+          <span class="dot" onclick="currentSlide(<%= index+1 %>)"></span>
+        <% end %>
+      </div>
 
-
-<div class="slideshow-container row col-md-12">
-  <div class="col-md-8 col-sm-12">
-    <% @review.images.each_with_index do |image, index|%>
-      <div class="mySlides fade col-md-12 col-sm-12">
-        <div class="col-md-12 modal-image">
-          <%= image_tag_remote(image) %>
-        </div>
-      </div>
-    <% end %>
-    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-    <a class="next" onclick="plusSlides(1)">&#10095;</a>
-  </div>
-  <div class="col-md-4 col-sm-12">
-    <div class="modal-review-content">
-      <div>
-        <div class="col-sm-12 mb-0">
-          <b style="font-size: larger;"><%= @review.customer_name_abbreviated %></b>
-        </div>
-        <div class="col-sm-12">
-          <b class="verified-buyer">  Verified Buyer </b>
-        </div>
-      </div>
-      <div class="modal-rating-and-updated-at">
-        <div>
-          <%= @review.rating_stars %>
-        </div> 
-        <div style="font-size: smaller; color: grey;">
-          <%= time_ago_in_words(@review.updated_at) %> ago
-        </div>
-      </div>
-      <div style="padding-bottom: 10px;">
-         <b><%= @review.title.upcase %> </b>
-      </div>
-      <div>
-        <%= @review.description %>
-      </div>
     </div>
   </div>
 </div>
-<br>
-
-<div style="text-align:center">
-  <% @review.images.each_with_index do |image, index|%>
-    <span class="dot" onclick="currentSlide(<%= index+1 %>)"></span>
-  <% end %>
-</div>
-
-
-    </div>
-  </div>
