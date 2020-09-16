@@ -43,6 +43,11 @@ function setupUppy(element) {
   let uppy = Uppy({
     autoProceed: false,
     allowMultipleUploads: false,
+    restrictions: {
+      maxFileSize: 1000000,
+      maxNumberOfFiles: 2,
+      allowedFileTypes: ['image/*']
+    },
     logger: Uppy.debugLogger
   })
 
